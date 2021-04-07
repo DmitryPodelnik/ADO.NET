@@ -1,0 +1,27 @@
+D:\ШАГ\3 КУРС БАКАЛАВРАТА\ADO.NET\Solved homework\Sales, connected layer 04.04.21\Connected Layer 04.04.21\Connected Layer 04.04.21\bin\Debug\netcoreapp3.1\Connected Layer 04.04.21.exe
+D:\ШАГ\3 КУРС БАКАЛАВРАТА\ADO.NET\Solved homework\Sales, connected layer 04.04.21\Connected Layer 04.04.21\Connected Layer 04.04.21\bin\Debug\netcoreapp3.1\Connected Layer 04.04.21.deps.json
+D:\ШАГ\3 КУРС БАКАЛАВРАТА\ADO.NET\Solved homework\Sales, connected layer 04.04.21\Connected Layer 04.04.21\Connected Layer 04.04.21\bin\Debug\netcoreapp3.1\Connected Layer 04.04.21.runtimeconfig.json
+D:\ШАГ\3 КУРС БАКАЛАВРАТА\ADO.NET\Solved homework\Sales, connected layer 04.04.21\Connected Layer 04.04.21\Connected Layer 04.04.21\bin\Debug\netcoreapp3.1\Connected Layer 04.04.21.runtimeconfig.dev.json
+D:\ШАГ\3 КУРС БАКАЛАВРАТА\ADO.NET\Solved homework\Sales, connected layer 04.04.21\Connected Layer 04.04.21\Connected Layer 04.04.21\bin\Debug\netcoreapp3.1\Connected Layer 04.04.21.dll
+D:\ШАГ\3 КУРС БАКАЛАВРАТА\ADO.NET\Solved homework\Sales, connected layer 04.04.21\Connected Layer 04.04.21\Connected Layer 04.04.21\bin\Debug\netcoreapp3.1\Connected Layer 04.04.21.pdb
+D:\ШАГ\3 КУРС БАКАЛАВРАТА\ADO.NET\Solved homework\Sales, connected layer 04.04.21\Connected Layer 04.04.21\Connected Layer 04.04.21\obj\Debug\netcoreapp3.1\Connected Layer 04.04.21.csprojAssemblyReference.cache
+D:\ШАГ\3 КУРС БАКАЛАВРАТА\ADO.NET\Solved homework\Sales, connected layer 04.04.21\Connected Layer 04.04.21\Connected Layer 04.04.21\obj\Debug\netcoreapp3.1\MainWindow.g.cs
+D:\ШАГ\3 КУРС БАКАЛАВРАТА\ADO.NET\Solved homework\Sales, connected layer 04.04.21\Connected Layer 04.04.21\Connected Layer 04.04.21\obj\Debug\netcoreapp3.1\App.g.cs
+D:\ШАГ\3 КУРС БАКАЛАВРАТА\ADO.NET\Solved homework\Sales, connected layer 04.04.21\Connected Layer 04.04.21\Connected Layer 04.04.21\obj\Debug\netcoreapp3.1\Connected Layer 04.04.21_MarkupCompile.cache
+D:\ШАГ\3 КУРС БАКАЛАВРАТА\ADO.NET\Solved homework\Sales, connected layer 04.04.21\Connected Layer 04.04.21\Connected Layer 04.04.21\obj\Debug\netcoreapp3.1\Connected Layer 04.04.21_MarkupCompile.lref
+D:\ШАГ\3 КУРС БАКАЛАВРАТА\ADO.NET\Solved homework\Sales, connected layer 04.04.21\Connected Layer 04.04.21\Connected Layer 04.04.21\obj\Debug\netcoreapp3.1\MainWindow.baml
+D:\ШАГ\3 КУРС БАКАЛАВРАТА\ADO.NET\Solved homework\Sales, connected layer 04.04.21\Connected Layer 04.04.21\Connected Layer 04.04.21\obj\Debug\netcoreapp3.1\Connected Layer 04.04.21.g.resources
+D:\ШАГ\3 КУРС БАКАЛАВРАТА\ADO.NET\Solved homework\Sales, connected layer 04.04.21\Connected Layer 04.04.21\Connected Layer 04.04.21\obj\Debug\netcoreapp3.1\Connected Layer 04.04.21.AssemblyInfoInputs.cache
+D:\ШАГ\3 КУРС БАКАЛАВРАТА\ADO.NET\Solved homework\Sales, connected layer 04.04.21\Connected Layer 04.04.21\Connected Layer 04.04.21\obj\Debug\netcoreapp3.1\Connected Layer 04.04.21.AssemblyInfo.cs
+D:\ШАГ\3 КУРС БАКАЛАВРАТА\ADO.NET\Solved homework\Sales, connected layer 04.04.21\Connected Layer 04.04.21\Connected Layer 04.04.21\obj\Debug\netcoreapp3.1\Connected Layer 04.04.21.dll
+D:\ШАГ\3 КУРС БАКАЛАВРАТА\ADO.NET\Solved homework\Sales, connected layer 04.04.21\Connected Layer 04.04.21\Connected Layer 04.04.21\obj\Debug\netcoreapp3.1\Connected Layer 04.04.21.pdb
+D:\ШАГ\3 КУРС БАКАЛАВРАТА\ADO.NET\Solved homework\Sales, connected layer 04.04.21\Connected Layer 04.04.21\Connected Layer 04.04.21\obj\Debug\netcoreapp3.1\Connected Layer 04.04.21.genruntimeconfig.cache
+D:\ШАГ\3 КУРС БАКАЛАВРАТА\ADO.NET\Solved homework\Sales, connected layer 04.04.21\Connected Layer 04.04.21\Connected Layer 04.04.21\bin\Debug\netcoreapp3.1\Connected Layer 04.04.21.dll.config
+D:\ШАГ\3 КУРС БАКАЛАВРАТА\ADO.NET\Solved homework\Sales, connected layer 04.04.21\Connected Layer 04.04.21\Connected Layer 04.04.21\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+D:\ШАГ\3 КУРС БАКАЛАВРАТА\ADO.NET\Solved homework\Sales, connected layer 04.04.21\Connected Layer 04.04.21\Connected Layer 04.04.21\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+D:\ШАГ\3 КУРС БАКАЛАВРАТА\ADO.NET\Solved homework\Sales, connected layer 04.04.21\Connected Layer 04.04.21\Connected Layer 04.04.21\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+D:\ШАГ\3 КУРС БАКАЛАВРАТА\ADO.NET\Solved homework\Sales, connected layer 04.04.21\Connected Layer 04.04.21\Connected Layer 04.04.21\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+D:\ШАГ\3 КУРС БАКАЛАВРАТА\ADO.NET\Solved homework\Sales, connected layer 04.04.21\Connected Layer 04.04.21\Connected Layer 04.04.21\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\ШАГ\3 КУРС БАКАЛАВРАТА\ADO.NET\Solved homework\Sales, connected layer 04.04.21\Connected Layer 04.04.21\Connected Layer 04.04.21\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\ШАГ\3 КУРС БАКАЛАВРАТА\ADO.NET\Solved homework\Sales, connected layer 04.04.21\Connected Layer 04.04.21\Connected Layer 04.04.21\obj\Debug\netcoreapp3.1\Connected Layer 04.04.21.csproj.CoreCompileInputs.cache
+D:\ШАГ\3 КУРС БАКАЛАВРАТА\ADO.NET\Solved homework\Sales, connected layer 04.04.21\Connected Layer 04.04.21\Connected Layer 04.04.21\obj\Debug\netcoreapp3.1\Connected Layer 04.04.21.csproj.CopyComplete

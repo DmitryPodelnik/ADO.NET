@@ -1,0 +1,72 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\ШАГ\\3 КУРС БАКАЛАВРАТА\\ADO.NET\\Solved homework\\Sales, connected layer 04.04.21\\Connected Layer 04.04.21\\Connected Layer 04.04.21\\Connected Layer 04.04.21.csproj": {}
+  },
+  "projects": {
+    "D:\\ШАГ\\3 КУРС БАКАЛАВРАТА\\ADO.NET\\Solved homework\\Sales, connected layer 04.04.21\\Connected Layer 04.04.21\\Connected Layer 04.04.21\\Connected Layer 04.04.21.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\ШАГ\\3 КУРС БАКАЛАВРАТА\\ADO.NET\\Solved homework\\Sales, connected layer 04.04.21\\Connected Layer 04.04.21\\Connected Layer 04.04.21\\Connected Layer 04.04.21.csproj",
+        "projectName": "Connected Layer 04.04.21",
+        "projectPath": "D:\\ШАГ\\3 КУРС БАКАЛАВРАТА\\ADO.NET\\Solved homework\\Sales, connected layer 04.04.21\\Connected Layer 04.04.21\\Connected Layer 04.04.21\\Connected Layer 04.04.21.csproj",
+        "packagesPath": "C:\\Users\\inko1\\.nuget\\packages\\",
+        "outputPath": "D:\\ШАГ\\3 КУРС БАКАЛАВРАТА\\ADO.NET\\Solved homework\\Sales, connected layer 04.04.21\\Connected Layer 04.04.21\\Connected Layer 04.04.21\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\inko1\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.407\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
