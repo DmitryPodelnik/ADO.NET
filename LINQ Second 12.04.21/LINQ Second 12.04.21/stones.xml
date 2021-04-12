@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<stones>
+  <stone transparency="true">
+    <name>Stone 1</name>
+    <type>Ornamental</type>
+    <color>Orange</color>
+    <description>Description stone 1 test</description>
+  </stone>
+  <stone transparency="false">
+    <name>Stone 2</name>
+    <type>Precious</type>
+    <color>Black</color>
+    <description>Description stone 2 test</description>
+  </stone>
+  <stone transparency="false">
+    <name>Stone 3</name>
+    <type>Semiprecious</type>
+    <color>Green</color>
+    <description>Description stone 3 test</description>
+  </stone>
+</stones>
