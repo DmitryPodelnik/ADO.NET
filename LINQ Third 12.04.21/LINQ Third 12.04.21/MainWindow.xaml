@@ -1,0 +1,38 @@
+﻿<Window x:Class="LINQ_Third_12._04._21.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LINQ_Third_12._04._21"
+        mc:Ignorable="d"
+        Title="Phonebook" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Button x:Name="readKey" Height="25" Width="80" Click="readKey_Click">Read File</Button>
+        <Button x:Name="saveKey" Height="25" Width="80" Grid.Row="1" Click="saveKey_Click">Save to file</Button>
+        <Button x:Name="showKey" Height="25" Width="100" Grid.Row="2" Click="showKey_Clicked" >Show numbers</Button>
+        <Button x:Name="nameSort" Height="25" Width="80" Grid.Row="3" Click="nameSort_Clicked">Sort by name</Button>
+        <Button x:Name="numberSort" Height="25" Width="80" Grid.Row="4" Click="numberSort_Clicked">Sort by number</Button>
+        <Button x:Name="addKey" Height="25" Width="80" Grid.Row="5" Click="addKey_Clicked">Add number</Button>
+        <Button x:Name="deleteKey" Height="25" Width="80" Grid.Row="6" Click="deleteKey_Clicked">Delete number</Button>
+        <ListView x:Name="mainList" Grid.RowSpan="9" Grid.Column="2" Grid.ColumnSpan="5" MouseDoubleClick="mainListView_MouseDoubleClick"></ListView>
+    </Grid>
+</Window>

@@ -1,0 +1,25 @@
+﻿<Window x:Class="LINQ_Third_12._04._21.Confirmation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LINQ_Third_12._04._21"
+        mc:Ignorable="d"
+        Title="Confirmation" Height="150" Width="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center">Are you sure to delete this number?</TextBlock>
+        <Button Grid.Row="2" Width="80" Height="23" Click="Button_Click">Yes</Button>
+        <Button Grid.Row="2" Grid.Column="1" Width="80" Height="23" Click="Button_Click_1">No</Button>
+    </Grid>
+</Window>
