@@ -1,0 +1,9 @@
+﻿<Application x:Class="EXAM_27._05._21.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:EXAM_27._05._21"
+             StartupUri="StepAcademy.xaml">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>
