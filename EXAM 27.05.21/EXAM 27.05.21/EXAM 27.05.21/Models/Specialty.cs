@@ -17,6 +17,7 @@ namespace EXAM_27._05._21.Models
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
+        [Required]
         public short SpecialtyCode { get; set; }
 
         [StringLength(50)]

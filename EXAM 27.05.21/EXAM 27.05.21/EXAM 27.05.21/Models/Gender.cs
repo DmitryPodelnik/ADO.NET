@@ -10,22 +10,17 @@ using System.Threading.Tasks;
 
 namespace EXAM_27._05._21.Models
 {
-    [Table("Subjects")]
-    class Subject : INotifyPropertyChanged
+    [Table("Genders")]
+    class Gender : INotifyPropertyChanged
     {
         [Column("Id")]  // Можно было не указывать потому, что так было бы по умолчанию, благодаря соглашению о наименованиях EF
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [StringLength(50)]
+        [StringLength(30)]
         [Required]
-        public string Name { get; set; }
-
-        [Required]
-        public byte Class { get; set; }
-
-        [Required]
-        public short Hours { get; set; }
+        [Column(TypeName = "Gender")]
+        public string Type { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")

@@ -10,39 +10,30 @@ using System.Threading.Tasks;
 
 namespace EXAM_27._05._21.Models
 {
-    [Table("Groups")]
-    class Group : INotifyPropertyChanged
+    [Table("Academies' Phones")]
+    class AcademyPhone : INotifyPropertyChanged
     {
         [Column("Id")]  // Можно было не указывать потому, что так было бы по умолчанию, благодаря соглашению о наименованиях EF
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [StringLength(50)]
+        [StringLength(30)]
         [Required]
-        public string Name { get; set; }
-
-        [Required]
-        public byte Class { get; set; }
+        public string Phone { get; set; }
 
         // Внешние ключи.
         // Задаем правила сопоставления классов модели с таблицами БД.
 
         // Просто поле, используемое как внешний ключ
-        //public long? LecturerId { get; set; }
+        public long? AcademyId { get; set; }
         // Навигационное свойство
         //
         // По умолчанию для навигационного свойства использовалось бы название ****
         // в соответствии с соглашениями об именах полей в EF. Но поскольку я хочу,
         // чтобы поле, являющееся внешним ключом, называлось в таблице не ****,
-        // а LecturerId, то использую атрибут [ForeignKey] с нужным мне именем.
-        //[ForeignKey("LecturerId")]
-        //public virtual Lecturer Lecturer { get; set; }
-        public ICollection<Lecturer> Lecturers { get; set; }
-
-        public long? LeaderId { get; set; }
-        [ForeignKey("LeaderId")]
-        public virtual Leader Leader { get; set; }
-
+        // а AcademyId, то использую атрибут [ForeignKey] с нужным мне именем.
+        [ForeignKey("AcademyId")]
+        public virtual Academy Academy { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")
