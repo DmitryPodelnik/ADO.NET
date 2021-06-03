@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using EXAM_27._05._21.ViewModels;
 
 namespace EXAM_27._05._21
 {
@@ -23,6 +24,8 @@ namespace EXAM_27._05._21
         public StepAcademy()
         {
             InitializeComponent();
+
+            DataContext = new MainViewModel();
         }
     }
 }

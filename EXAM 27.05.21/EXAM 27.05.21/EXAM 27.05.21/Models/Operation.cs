@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace EXAM_27._05._21.Models
 {
-    class Operation
+    public class Operation
     {
         public string Name { get; private set; } // имя
         public ICommand AddCommand { get; private set; } // команда для кнопки Add

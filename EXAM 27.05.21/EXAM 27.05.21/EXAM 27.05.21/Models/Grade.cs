@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace EXAM_27._05._21.Models
 {
     [Table("Grades")]
-    class Grade : INotifyPropertyChanged
+    public class Grade : INotifyPropertyChanged
     {
         [Column("Id")]  // Можно было не указывать потому, что так было бы по умолчанию, благодаря соглашению о наименованиях EF
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
