@@ -13,7 +13,7 @@ namespace EXAM_27._05._21.Configurations
     {
         public void Configure(EntityTypeBuilder<StudentGrade> builder)
         {
-            builder.ToTable("StudentGrade").HasData(
+            builder.HasData(
               new StudentGrade[]
               {
                     new StudentGrade { Id = 1, StudentId = 1, GradeId = 1, CreditId = 1},

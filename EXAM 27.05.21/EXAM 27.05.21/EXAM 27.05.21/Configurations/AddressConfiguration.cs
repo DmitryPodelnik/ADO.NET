@@ -13,7 +13,7 @@ namespace EXAM_27._05._21.Configurations
     {
         public void Configure(EntityTypeBuilder<Address> builder)
         {
-            builder.ToTable("Address").HasData(
+            builder.HasData(
               new Address[]
               {
                     new Address { Id = 1, District = "380123123", City = "Odesa", Street = "Central", House = "1F", Flat = "23", StudentId = 1},

@@ -13,7 +13,7 @@ namespace EXAM_27._05._21.Configurations
     {
         public void Configure(EntityTypeBuilder<Specialty> builder)
         {
-            builder.ToTable("Specialty").HasData(
+            builder.HasData(
               new Specialty[]
               {
                     new Specialty { Id = 1, SpecialtyCode = 1, Name = "Software Development"},

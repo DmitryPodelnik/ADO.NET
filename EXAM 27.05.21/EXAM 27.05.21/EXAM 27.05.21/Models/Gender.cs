@@ -19,7 +19,7 @@ namespace EXAM_27._05._21.Models
 
         [StringLength(30)]
         [Required]
-        [Column(TypeName = "Gender")]
+       // [Column(TypeName = "Gender")]
         public string Type { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;

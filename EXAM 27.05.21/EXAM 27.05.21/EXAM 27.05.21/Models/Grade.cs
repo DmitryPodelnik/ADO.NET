@@ -22,7 +22,7 @@ namespace EXAM_27._05._21.Models
         public string Mark { get; set; }
 
         [Required]
-        [Column(TypeName = "Grade")]
+        // [Column(TypeName = "Grade")]
         public short Value { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;

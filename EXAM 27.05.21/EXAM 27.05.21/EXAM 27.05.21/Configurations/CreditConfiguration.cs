@@ -13,7 +13,7 @@ namespace EXAM_27._05._21.Configurations
     {
         public void Configure(EntityTypeBuilder<Credit> builder)
         {
-            builder.ToTable("Credit").HasData(
+            builder.HasData(
               new Credit[]
               {
                     new Credit { Id = 1, Grade = 5, Subject = "Math"},

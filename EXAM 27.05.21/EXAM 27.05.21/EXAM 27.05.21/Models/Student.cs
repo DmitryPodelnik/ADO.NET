@@ -53,7 +53,7 @@ namespace EXAM_27._05._21.Models
         // Задаем правила сопоставления классов модели с таблицами БД.
 
         // Просто поле, используемое как внешний ключ
-        public long? GroupId { get; set; }
+        public int? GroupId { get; set; }
         // Навигационное свойство
         //
         // По умолчанию для навигационного свойства использовалось бы название ****
@@ -63,16 +63,16 @@ namespace EXAM_27._05._21.Models
         [ForeignKey("GroupId")]
         public virtual Group Group { get; set; }
 
-        public long? GenderId { get; set; }
+        public int? GenderId { get; set; }
         [ForeignKey("GenderId")]
         public virtual Gender Gender { get; set; }
 
-        public long? SpecialtyId { get; set; }
+        public int? SpecialtyId { get; set; }
         [ForeignKey("SpecialtyId")]
         public virtual Specialty Specialty { get; set; }
 
-        public long? AddressId { get; set; }
-        [ForeignKey("AddressId")]
+        //public int? AddressId { get; set; }
+        //[ForeignKey("AddressId")]
         public virtual Address Address { get; set; }
 
 

@@ -13,7 +13,7 @@ namespace EXAM_27._05._21.Configurations
     {
         public void Configure(EntityTypeBuilder<Lecturer> builder)
         {
-            builder.ToTable("Lecturer").HasData(
+            builder.HasData(
               new Lecturer[]
               {
                     new Lecturer { Id = 1, FirstName = "Dmitry", LastName = "Pupkin", BirthDate = Convert.ToDateTime("22/10/1981")},

@@ -22,7 +22,7 @@ namespace EXAM_27._05._21.Models
 
         [StringLength(50)]
         [Required]
-        [Column(TypeName = "Specialty")]
+        // [Column(TypeName = "Specialty")]
         public string Name { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;

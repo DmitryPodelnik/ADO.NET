@@ -13,7 +13,7 @@ namespace EXAM_27._05._21.Configurations
     {
         public void Configure(EntityTypeBuilder<Leader> builder)
         {
-            builder.ToTable("Leader").HasData(
+            builder.HasData(
               new Leader[]
               {
                     new Leader { Id = 1, StudentId = 1, GroupId = 1},

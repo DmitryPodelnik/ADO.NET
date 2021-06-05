@@ -13,7 +13,7 @@ namespace EXAM_27._05._21.Configurations
     {
         public void Configure(EntityTypeBuilder<Gender> builder)
         {
-            builder.ToTable("Gender").HasData(
+            builder.HasData(
               new Gender[]
               {
                     new Gender { Id = 1, Type = "Male"},

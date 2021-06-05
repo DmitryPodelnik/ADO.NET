@@ -21,7 +21,7 @@ namespace EXAM_27._05._21.Models
         // Задаем правила сопоставления классов модели с таблицами БД.
 
         // Просто поле, используемое как внешний ключ
-        public long? StudentId { get; set; }
+        public int? StudentId { get; set; }
         // Навигационное свойство
         //
         // По умолчанию для навигационного свойства использовалось бы название ****
@@ -31,7 +31,7 @@ namespace EXAM_27._05._21.Models
         [ForeignKey("StudentId")]
         public virtual Student Student { get; set; }
 
-        public long? GroupId { get; set; }
+        public int? GroupId { get; set; }
         [ForeignKey("GroupId")]
         public virtual Group Group { get; set; }
 

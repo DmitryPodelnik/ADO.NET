@@ -13,7 +13,7 @@ namespace EXAM_27._05._21.Configurations
     {
         public void Configure(EntityTypeBuilder<Academy> builder)
         {
-            builder.ToTable("Academy").HasData(
+            builder.HasData(
                 new Academy[]
                 {
                     new Academy { Id = 1, City = "Odesa", Street = "Central", House = "2A"},

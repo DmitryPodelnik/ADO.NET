@@ -13,7 +13,7 @@ namespace EXAM_27._05._21.Configurations
     {
         public void Configure(EntityTypeBuilder<AcademyPhone> builder)
         {
-            builder.ToTable("AcademyPhone").HasData(
+            builder.HasData(
               new AcademyPhone[]
               {
                     new AcademyPhone { Id = 1, Phone = "380123123", AcademyId = 1},

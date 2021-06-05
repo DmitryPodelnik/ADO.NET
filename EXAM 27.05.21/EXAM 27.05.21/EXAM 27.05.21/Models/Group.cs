@@ -39,8 +39,8 @@ namespace EXAM_27._05._21.Models
         //public virtual Lecturer Lecturer { get; set; }
         public ICollection<Lecturer> Lecturers { get; set; }
 
-        public long? LeaderId { get; set; }
-        [ForeignKey("LeaderId")]
+        //public int? LeaderId { get; set; }
+        //[ForeignKey("LeaderId")]
         public virtual Leader Leader { get; set; }
 
 

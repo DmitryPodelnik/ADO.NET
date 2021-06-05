@@ -13,7 +13,7 @@ namespace EXAM_27._05._21.Configurations
     {
         public void Configure(EntityTypeBuilder<Subject> builder)
         {
-            builder.ToTable("Subject").HasData(
+            builder.HasData(
               new Subject[]
               {
                     new Subject { Id = 1, Name = "Math", Class = 1, Hours = 35},
