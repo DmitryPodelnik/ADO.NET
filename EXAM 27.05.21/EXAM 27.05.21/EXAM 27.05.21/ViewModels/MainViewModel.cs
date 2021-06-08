@@ -13,17 +13,30 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using EXAM_27._05._21.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-
 
 namespace EXAM_27._05._21.ViewModels
 {
     class MainViewModel : INotifyPropertyChanged
     {
-        private string _connectionString;
+        private StepAcademyDataBase _database = new();
+        //private StepAcademyContext _context;
         public List<string> Tables { get; set; } = new();
+        public List<Academy> Academies { get; set; } = new();
+
+        private string _selectedTable;
+        public string SelectedTable
+        {
+            get { return _selectedTable; }
+            set
+            {
+                _selectedTable = value;
+                RefreshDataGrid();
+            }
+        }
 
         private AcademyViewModel _academyViewModel;
         private AddressViewModel _addressViewModel;
@@ -32,78 +45,110 @@ namespace EXAM_27._05._21.ViewModels
         private GradeViewModel _gradeViewModel;
         private GroupDescription _groupViewModel;
         private LeaderViewModel _leaderViewModel;
+        private LecturerViewModel _lecturerViewModel;
         private SpecialtyViewModel _specialtyViewModel;
         private StudentGradeViewModel _studentGradeViewModel;
         private StudentViewModel _studentViewModel;
         private SubjectViewModel _subjectViewModel;
 
-        public List<IViewItems> Items { get; set; } = new();
+        private StepAcademy _mainWindow = (StepAcademy)Application.Current.MainWindow;
 
         public MainViewModel()
         {
-            // Получаем объект конфигурации, которую берем из файла appsettings.json
-            var configuration =
-                new ConfigurationBuilder()
-                    .SetBasePath(Directory.GetCurrentDirectory())
-                    .AddJsonFile("appsettings.json")
-                    .Build();
+            Tables = _database.GetTables(Tables);
+            //_context = new StepAcademyContext(_database.Options);
+        }
 
-            // Получаем строку подключения из файла appsettings.json
-            _connectionString = configuration.GetConnectionString("DefaultConnection");
+        private async Task RefreshDataGrid()
+        {
+            await ShowObjectsAsync();
+        }
 
-            // Создаем объект контекста EF, указываем ему строку соединения и
-            // получаем объект настроек для конструктора объекта контекста EF
-            var options =
-                new DbContextOptionsBuilder<StepAcademyContext>()
-                    .UseSqlServer(_connectionString)
-                    .Options;
-            using (var context = new StepAcademyContext(options))
+        private async Task ShowObjectsAsync()
+        {
+            using (var _context = new StepAcademyContext(_database.Options))
             {
-                context.Academies.Load();
-                context.AcademyPhones.Load();
-                context.Addresses.Load();
-                context.Credits.Load();
-                context.Genders.Load();
-                context.Grades.Load();
-                context.Groups.Load();
-                context.Leaders.Load();
-                context.Specialties.Load();
-                context.Students.Load();
-                context.StudentGrades.Load();
-                context.Subjects.Load();
-            }
-
-            using (var connection = new SqlConnection(_connectionString))
-            {
-                // Открываем соединение
-                connection.Open();
-
-                DataTable schema = connection.GetSchema("Tables");
-                foreach (DataRow row in schema.Rows)
+                switch (_mainWindow.chooseTable.SelectedItem.ToString())
                 {
-                    Tables.Add(row[2].ToString());
+                    case "Academies":
+
+                        _mainWindow.mainDataGrid.ItemsSource = await _context.Academies.ToListAsync();
+
+                        break;
+
+                    case "Academies' Phones":
+
+                        _mainWindow.mainDataGrid.ItemsSource = await _context.Academies.ToListAsync();
+
+                        break;
+
+                    case "Addresses":
+
+                        _mainWindow.mainDataGrid.ItemsSource = await _context.Addresses.ToListAsync();
+
+                        break;
+
+                    case "Credits":
+
+                        _mainWindow.mainDataGrid.ItemsSource = await _context.Credits.ToListAsync();
+
+                        break;
+
+                    case "Genders":
+
+                        _mainWindow.mainDataGrid.ItemsSource = await _context.Genders.ToListAsync();
+
+                        break;
+
+                    case "Grades":
+
+                        _mainWindow.mainDataGrid.ItemsSource = await _context.Grades.ToListAsync();
+
+                        break;
+
+                    case "Groups":
+
+                        _mainWindow.mainDataGrid.ItemsSource = await _context.Groups.ToListAsync();
+
+                        break;
+
+                    case "Leaders":
+
+                        _mainWindow.mainDataGrid.ItemsSource = await _context.Leaders.ToListAsync();
+
+                        break;
+
+                    case "Lecturers":
+
+                        _mainWindow.mainDataGrid.ItemsSource = await _context.Lecturers.ToListAsync();
+
+                        break;
+
+                    case "Specialties":
+
+                        _mainWindow.mainDataGrid.ItemsSource = await _context.Specialties.ToListAsync();
+
+                        break;
+
+                    case "Students":
+
+                        _mainWindow.mainDataGrid.ItemsSource = await _context.Students.ToListAsync();
+
+                        break;
+
+                    case "Students'Grades":
+
+                        _mainWindow.mainDataGrid.ItemsSource = await _context.StudentGrades.ToListAsync();
+
+                        break;
+
+                    case "Subjects":
+
+                        _mainWindow.mainDataGrid.ItemsSource = await _context.Subjects.ToListAsync();
+
+                        break;
                 }
-
-            } // закрываем соединение
-
-            /*
-             // SQL-запросы
-             ObjectContext context =
-                (new StepAcademyContext() as IObjectContextAdapter).ObjectContext;
-
-             // Создать объект подключения и команду
-             SqlConnection connection = new SqlConnection(
-                 @"Data Source=.\SQLEXPRESS;Initial Catalog=MyShop");
-
-             // Создать запрос
-             ObjectQuery<DbDataRecord> Customers =
-                 context.CreateQuery<DbDataRecord>("SELECT c.FirstName FROM Customers AS c");
-
-             // Отобразить имя первого покупателя в таблице Cusomers
-             Console.WriteLine(Customers != null ?
-                 Customers.First()["FirstName"].ToString()
-                 : "Таблица пустая");
-            */
+            }
         }
 
         private RelayCommand _addCommand;

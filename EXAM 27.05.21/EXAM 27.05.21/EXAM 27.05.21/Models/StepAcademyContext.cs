@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +22,7 @@ namespace EXAM_27._05._21
         public DbSet<Grade> Grades { get; set; }
         public DbSet<Group> Groups { get; set; }
         public DbSet<Leader> Leaders { get; set; }
+        public DbSet<Lecturer> Lecturers { get; set; }
         public DbSet<Specialty> Specialties { get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<StudentGrade> StudentGrades { get; set; }
@@ -28,6 +31,11 @@ namespace EXAM_27._05._21
         public StepAcademyContext(DbContextOptions<StepAcademyContext> options) : base(options)
         {
             // Если такая БД уже есть, то удаляем ее
+            ConnectToDatabase();
+        }
+
+        private void ConnectToDatabase()
+        {
             if (Database.CanConnect())
                 Database.EnsureDeleted();
 

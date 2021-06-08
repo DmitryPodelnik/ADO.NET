@@ -2,12 +2,3 @@
 GUI-приложение для работы с этой базой данных. В качестве технологии доступа к
 базам данных использовать Entity Framework, в качестве GUI-фреймворка — либо
 WinForms + паттерн MVP, либо WPF + паттерн MVVM.
-
-
-	[Leader] int NULL FOREIGN KEY REFERENCES Leaders(Id)
-						 ON DELETE CASCADE
-						 ON UPDATE CASCADE,
-
-	[AddressId] int NULL FOREIGN KEY REFERENCES Addresses(Id)
-							ON DELETE NO ACTION
-							ON UPDATE CASCADE,
