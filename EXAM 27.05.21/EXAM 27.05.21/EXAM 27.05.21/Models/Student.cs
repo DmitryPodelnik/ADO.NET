@@ -60,22 +60,24 @@ namespace EXAM_27._05._21.Models
         // в соответствии с соглашениями об именах полей в EF. Но поскольку я хочу,
         // чтобы поле, являющееся внешним ключом, называлось в таблице не ****,
         // а GroupId, то использую атрибут [ForeignKey] с нужным мне именем.
-        //[ForeignKey("GroupId")]
-        //public virtual Group Group { get; set; }
+        [ForeignKey("GroupId")]
+        public virtual Group Group { get; set; }
 
         public int? GenderId { get; set; }
-        //[ForeignKey("GenderId")]
-        //public virtual Gender Gender { get; set; }
+        [ForeignKey("GenderId")]
+        public virtual Gender Gender { get; set; }
 
         public int? SpecialtyId { get; set; }
-        //[ForeignKey("SpecialtyId")]
-        //public virtual Specialty Specialty { get; set; }
+        [ForeignKey("SpecialtyId")]
+        public virtual Specialty Specialty { get; set; }
 
         public int? AddressId { get; set; }
-        //[ForeignKey("AddressId")]
-        //public virtual Address Address { get; set; }
+        [ForeignKey("AddressId")]
+        public virtual Address Address { get; set; }
 
+        public List<StudentGrade> Grades { get; set; } = new();
 
+        public Leader Leader { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")

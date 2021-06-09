@@ -23,9 +23,7 @@ namespace EXAM_27._05._21.ViewModels
     class MainViewModel : INotifyPropertyChanged
     {
         private StepAcademyDataBase _database = new();
-        //private StepAcademyContext _context;
         public List<string> Tables { get; set; } = new();
-        public List<Academy> Academies { get; set; } = new();
 
         private string _selectedTable;
         public string SelectedTable
@@ -34,121 +32,144 @@ namespace EXAM_27._05._21.ViewModels
             set
             {
                 _selectedTable = value;
-                RefreshDataGrid();
+                RefreshDataGrid(_selectedTable);
             }
         }
 
-        private AcademyViewModel _academyViewModel;
-        private AddressViewModel _addressViewModel;
-        private CreditViewModel _creditViewModel;
-        private GenderViewModel _genderViewModel;
-        private GradeViewModel _gradeViewModel;
-        private GroupDescription _groupViewModel;
-        private LeaderViewModel _leaderViewModel;
-        private LecturerViewModel _lecturerViewModel;
-        private SpecialtyViewModel _specialtyViewModel;
-        private StudentGradeViewModel _studentGradeViewModel;
-        private StudentViewModel _studentViewModel;
-        private SubjectViewModel _subjectViewModel;
+        // For future versions
+        //
+        //private AcademyViewModel _academyViewModel;
+        //private AddressViewModel _addressViewModel;
+        //private CreditViewModel _creditViewModel;
+        //private GenderViewModel _genderViewModel;
+        //private GradeViewModel _gradeViewModel;
+        //private GroupDescription _groupViewModel;
+        //private LeaderViewModel _leaderViewModel;
+        //private LecturerViewModel _lecturerViewModel;
+        //private SpecialtyViewModel _specialtyViewModel;
+        //private StudentGradeViewModel _studentGradeViewModel;
+        //private StudentViewModel _studentViewModel;
+        //private SubjectViewModel _subjectViewModel;
 
         private StepAcademy _mainWindow = (StepAcademy)Application.Current.MainWindow;
 
         public MainViewModel()
         {
             Tables = _database.GetTables(Tables);
-            //_context = new StepAcademyContext(_database.Options);
         }
 
-        private async Task RefreshDataGrid()
+        private async Task RefreshDataGrid(string table)
         {
-            await ShowObjectsAsync();
+            await ShowObjectsAsync(table);
         }
 
-        private async Task ShowObjectsAsync()
+        private async Task ShowObjectsAsync(string table)
         {
-            using (var _context = new StepAcademyContext(_database.Options))
+            switch (table)
             {
-                switch (_mainWindow.chooseTable.SelectedItem.ToString())
-                {
-                    case "Academies":
+                case "Academies":
 
-                        _mainWindow.mainDataGrid.ItemsSource = await _context.Academies.ToListAsync();
+                    _mainWindow.mainDataGrid.ItemsSource = await _database.Context.Academies.ToListAsync();
 
-                        break;
+                    break;
 
-                    case "Academies' Phones":
+                case "Academies' Phones":
 
-                        _mainWindow.mainDataGrid.ItemsSource = await _context.Academies.ToListAsync();
+                    _mainWindow.mainDataGrid.ItemsSource = await _database.Context.Academies.ToListAsync();
 
-                        break;
+                    break;
 
-                    case "Addresses":
+                case "Addresses":
 
-                        _mainWindow.mainDataGrid.ItemsSource = await _context.Addresses.ToListAsync();
+                   _mainWindow.mainDataGrid.ItemsSource = await _database.Context.Addresses.ToListAsync();
 
-                        break;
+                    break;
 
-                    case "Credits":
+                case "Credits":
 
-                        _mainWindow.mainDataGrid.ItemsSource = await _context.Credits.ToListAsync();
+                    _mainWindow.mainDataGrid.ItemsSource = await _database.Context.Credits.ToListAsync();
 
-                        break;
+                    break;
 
-                    case "Genders":
+                case "Genders":
 
-                        _mainWindow.mainDataGrid.ItemsSource = await _context.Genders.ToListAsync();
+                    _mainWindow.mainDataGrid.ItemsSource = await _database.Context.Genders.ToListAsync();
 
-                        break;
+                    break;
 
-                    case "Grades":
+                case "Grades":
 
-                        _mainWindow.mainDataGrid.ItemsSource = await _context.Grades.ToListAsync();
+                    _mainWindow.mainDataGrid.ItemsSource = await _database.Context.Grades.ToListAsync();
 
-                        break;
+                    break;
 
-                    case "Groups":
+                case "Groups":
 
-                        _mainWindow.mainDataGrid.ItemsSource = await _context.Groups.ToListAsync();
+                    _mainWindow.mainDataGrid.ItemsSource = await _database.Context.Groups.ToListAsync();
 
-                        break;
+                    break;
 
-                    case "Leaders":
+                case "Leaders":
 
-                        _mainWindow.mainDataGrid.ItemsSource = await _context.Leaders.ToListAsync();
+                    _mainWindow.mainDataGrid.ItemsSource = await _database.Context.Leaders.ToListAsync();
 
-                        break;
+                    break;
 
-                    case "Lecturers":
+                case "Lecturers":
 
-                        _mainWindow.mainDataGrid.ItemsSource = await _context.Lecturers.ToListAsync();
+                    _mainWindow.mainDataGrid.ItemsSource = await _database.Context.Lecturers.ToListAsync();
 
-                        break;
+                    break;
 
-                    case "Specialties":
+                case "Specialties":
 
-                        _mainWindow.mainDataGrid.ItemsSource = await _context.Specialties.ToListAsync();
+                    _mainWindow.mainDataGrid.ItemsSource = await _database.Context.Specialties.ToListAsync();
 
-                        break;
+                    break;
 
-                    case "Students":
+                case "Students":
 
-                        _mainWindow.mainDataGrid.ItemsSource = await _context.Students.ToListAsync();
+                    ObservableCollection<Student> students = new();
+                    //_mainWindow.mainDataGrid.ItemsSource = await _database.Context.Students.ToListAsync();
 
-                        break;
+                    await _database.Context.Students.ForEachAsync(student =>
+                    {
+                        var newStudent = new Student
+                        {
+                            Id = student.Id,
+                            FirstName = student.FirstName,
+                            LastName = student.LastName,
+                            BirthDate = student.BirthDate,
+                            GradeBookNumber = student.GradeBookNumber,
+                            Note = student.Note,
+                            Phone = student.Phone,
+                            Email = student.Email,
+                            AdmissionYear = student.AdmissionYear,
+                            GroupId = student.GroupId,
+                            GenderId = student.GenderId,
+                            SpecialtyId = student.SpecialtyId,
+                            AddressId = student.AddressId //== _database.Context.Addresses.Find(student.AddressId) ? student.AddressId : student.AddressId
+                        };
 
-                    case "Students'Grades":
+                        students.Add(newStudent);
+                    });
+                    _mainWindow.mainDataGrid.ItemsSource = students;
 
-                        _mainWindow.mainDataGrid.ItemsSource = await _context.StudentGrades.ToListAsync();
+                    break;
 
-                        break;
+                case "Students'Grades":
 
-                    case "Subjects":
+                    _mainWindow.mainDataGrid.ItemsSource = await _database.Context.StudentGrades.ToListAsync();
 
-                        _mainWindow.mainDataGrid.ItemsSource = await _context.Subjects.ToListAsync();
+                    break;
 
-                        break;
-                }
+                case "Subjects":
+
+                    _mainWindow.mainDataGrid.ItemsSource = await _database.Context.Subjects.ToListAsync();
+
+                    break;
             }
+            _mainWindow.mainDataGrid.Items.Refresh();
         }
 
         private RelayCommand _addCommand;

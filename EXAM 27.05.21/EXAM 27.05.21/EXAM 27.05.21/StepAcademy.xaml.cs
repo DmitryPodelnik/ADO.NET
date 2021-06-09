@@ -30,5 +30,16 @@ namespace EXAM_27._05._21
 
             DataContext = new MainViewModel();
         }
+
+        private void mainDataGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            string headername = e.Column.Header.ToString();
+
+            //Cancel the column you don't want to generate
+            if (headername == "Id")
+            {
+                e.Cancel = true;
+            }
+        }
     }
 }

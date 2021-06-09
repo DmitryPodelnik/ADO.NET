@@ -35,14 +35,11 @@ namespace EXAM_27._05._21.Models
         // в соответствии с соглашениями об именах полей в EF. Но поскольку я хочу,
         // чтобы поле, являющееся внешним ключом, называлось в таблице не ****,
         // а LecturerId, то использую атрибут [ForeignKey] с нужным мне именем.
-        //[ForeignKey("LecturerId")]
-        //public virtual Lecturer Lecturer { get; set; }
-        public ICollection<Lecturer> Lecturers { get; set; }
+        public List<Lecturer> Lecturers { get; set; } = new();
 
-        //public int? LeaderId { get; set; }
-        //[ForeignKey("LeaderId")]
-        public virtual Leader Leader { get; set; }
+        public List<Student> Students { get; set; } = new();
 
+        public Leader Leader { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")

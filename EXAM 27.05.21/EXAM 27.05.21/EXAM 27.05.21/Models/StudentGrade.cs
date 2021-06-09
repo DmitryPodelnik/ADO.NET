@@ -39,7 +39,6 @@ namespace EXAM_27._05._21.Models
         [ForeignKey("CreditId")]
         public virtual Credit Credit { get; set; }
 
-        //public ICollection<Credit> Credits { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")

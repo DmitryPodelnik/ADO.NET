@@ -24,6 +24,7 @@ namespace EXAM_27._05._21.Models
         [Required]
         // [Column(TypeName = "Credit")]
         public string Subject { get; set; }
+        public StudentGrade StudentGrade { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")

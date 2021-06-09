@@ -13,7 +13,15 @@ namespace EXAM_27._05._21.Models
 {
     public class StepAcademyDataBase
     {
-        private StepAcademyContext _context;
+        private StepAcademyContext context;
+        public StepAcademyContext Context
+        {
+            get => context;
+            set
+            {
+                context = value;
+            }
+        }
         public string ConnectionString { get; set; }
         public DbContextOptions<StepAcademyContext> Options { get; set; }
 
@@ -36,24 +44,21 @@ namespace EXAM_27._05._21.Models
                     .Options;
             Options = options;
 
-            _context = new StepAcademyContext(options);
+            context = new StepAcademyContext(options);
 
-            using (var context = new StepAcademyContext(options))
-            {
-                context.Academies.Load();
-                context.AcademyPhones.Load();
-                context.Addresses.Load();
-                context.Credits.Load();
-                context.Genders.Load();
-                context.Grades.Load();
-                context.Groups.Load();
-                context.Leaders.Load();
-                context.Lecturers.Load();
-                context.Specialties.Load();
-                context.Students.Load();
-                context.StudentGrades.Load();
-                context.Subjects.Load();
-            }
+            context.Academies.Load();
+            context.AcademyPhones.Load();
+            context.Addresses.Load();
+            context.Credits.Load();
+            context.Genders.Load();
+            context.Grades.Load();
+            context.Groups.Load();
+            context.Leaders.Load();
+            context.Lecturers.Load();
+            context.Specialties.Load();
+            context.Students.Load();
+            context.StudentGrades.Load();
+            context.Subjects.Load();
         }
 
         public List<string> GetTables(List<string> Tables)
