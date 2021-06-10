@@ -67,15 +67,11 @@ namespace EXAM_27._05._21.Models
         [ForeignKey("GenderId")]
         public virtual Gender Gender { get; set; }
 
-        public int? SpecialtyId { get; set; }
-        [ForeignKey("SpecialtyId")]
-        public virtual Specialty Specialty { get; set; }
-
         public int? AddressId { get; set; }
         [ForeignKey("AddressId")]
         public virtual Address Address { get; set; }
 
-        public List<StudentGrade> Grades { get; set; } = new();
+        public StudentGrade Grades { get; set; }
 
         public Leader Leader { get; set; }
 

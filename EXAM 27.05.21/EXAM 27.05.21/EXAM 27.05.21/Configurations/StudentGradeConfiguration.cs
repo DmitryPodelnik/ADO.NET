@@ -16,9 +16,9 @@ namespace EXAM_27._05._21.Configurations
             builder.HasData(
               new StudentGrade[]
               {
-                    new StudentGrade { Id = 1, StudentId = 1, GradeId = 1, CreditId = 1},
-                    new StudentGrade { Id = 2, StudentId = 2, GradeId = 2, CreditId = 2},
-                    new StudentGrade { Id = 3, StudentId = 3, GradeId = 3, CreditId = 3}
+                    new StudentGrade { Id = 1, StudentId = 1},
+                    new StudentGrade { Id = 2, StudentId = 2},
+                    new StudentGrade { Id = 3, StudentId = 3}
               });
         }
     }

@@ -29,6 +29,8 @@ namespace EXAM_27._05._21.Models
         [Required]
         public string House { get; set; }
 
+        public List<AcademyPhone> AcademyPhones { get; set; } = new();
+
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {

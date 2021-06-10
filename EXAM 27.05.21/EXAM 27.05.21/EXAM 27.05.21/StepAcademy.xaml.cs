@@ -35,10 +35,43 @@ namespace EXAM_27._05._21
         {
             string headername = e.Column.Header.ToString();
 
-            //Cancel the column you don't want to generate
-            if (headername == "Id")
+            //Cancel the column you don't want to generate 
+            if (headername == "Id" || headername == "AcademyPhones" || headername == "Students" ||
+                headername == "Academy" || headername == "Student" || headername == "Lecturers" ||
+                headername == "Leader" || headername == "Gender" || headername == "Group" || 
+                headername == "Address" || headername == "Grades" || headername == "Specialty" ||
+                headername == "StudentGrade")
             {
                 e.Cancel = true;
+            }
+
+            if (headername == "AcademyId")
+            {
+                e.Column.Header = "Academy";
+            }
+            else if (headername == "GroupId")
+            {
+                e.Column.Header = "Group";
+            }
+            else if (headername == "GenderId")
+            {
+                e.Column.Header = "Gender";
+            }
+            else if (headername == "AddressId")
+            {
+                e.Column.Header = "Address";
+            }
+            else if (headername == "SpecialtyId")
+            {
+                e.Column.Header = "Specialty";
+            }
+            else if (headername == "StudentGradeId")
+            {
+                e.Column.Header = "Student Grade";
+            }
+            else if (headername == "StudentId")
+            {
+                e.Column.Header = "Student";
             }
         }
     }

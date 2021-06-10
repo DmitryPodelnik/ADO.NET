@@ -25,6 +25,10 @@ namespace EXAM_27._05._21.Models
         // [Column(TypeName = "Grade")]
         public short Value { get; set; }
 
+        public int? StudentGradeId { get; set; }
+        [ForeignKey("StudentGradeId")]
+        public virtual StudentGrade StudentGrade { get; set; }
+
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {

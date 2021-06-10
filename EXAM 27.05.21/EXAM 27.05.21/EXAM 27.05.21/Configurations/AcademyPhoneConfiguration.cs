@@ -17,8 +17,8 @@ namespace EXAM_27._05._21.Configurations
               new AcademyPhone[]
               {
                     new AcademyPhone { Id = 1, Phone = "380123123", AcademyId = 1},
-                    new AcademyPhone { Id = 2, Phone = "380123123", AcademyId = 2},
-                    new AcademyPhone { Id = 3, Phone = "380123123", AcademyId = 3}
+                    new AcademyPhone { Id = 2, Phone = "380123124", AcademyId = 2},
+                    new AcademyPhone { Id = 3, Phone = "380123125", AcademyId = 3}
               });
         }
     }

@@ -41,7 +41,7 @@ namespace EXAM_27._05._21.Models
         // Задаем правила сопоставления классов модели с таблицами БД.
 
         // Просто поле, используемое как внешний ключ
-        public Student Student { get; set; }
+        public List<Student> Students { get; set; } = new();
 
 
         public event PropertyChangedEventHandler PropertyChanged;

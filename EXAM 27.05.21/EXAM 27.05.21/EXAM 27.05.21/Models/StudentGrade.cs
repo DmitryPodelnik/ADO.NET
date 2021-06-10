@@ -29,15 +29,9 @@ namespace EXAM_27._05._21.Models
         // чтобы поле, являющееся внешним ключом, называлось в таблице не ****,
         // а StudentId, то использую атрибут [ForeignKey] с нужным мне именем.
         [ForeignKey("StudentId")]
-        public virtual Student Student { get; set; }
+        public Student Student { get; set; }
 
-        public int? GradeId { get; set; }
-        [ForeignKey("GradeId")]
-        public virtual Grade Grade { get; set; }
-
-        public int? CreditId { get; set; }
-        [ForeignKey("CreditId")]
-        public virtual Credit Credit { get; set; }
+        public List<Grade> Grades { get; set; } = new();
 
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -75,7 +75,7 @@ namespace EXAM_27._05._21.ViewModels
 
                 case "Academies' Phones":
 
-                    _mainWindow.mainDataGrid.ItemsSource = await _database.Context.Academies.ToListAsync();
+                    _mainWindow.mainDataGrid.ItemsSource = await _database.Context.AcademyPhones.ToListAsync();
 
                     break;
 
@@ -147,7 +147,6 @@ namespace EXAM_27._05._21.ViewModels
                             AdmissionYear = student.AdmissionYear,
                             GroupId = student.GroupId,
                             GenderId = student.GenderId,
-                            SpecialtyId = student.SpecialtyId,
                             AddressId = student.AddressId //== _database.Context.Addresses.Find(student.AddressId) ? student.AddressId : student.AddressId
                         };
 

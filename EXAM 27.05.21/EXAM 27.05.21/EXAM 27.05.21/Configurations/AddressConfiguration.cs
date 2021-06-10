@@ -16,9 +16,9 @@ namespace EXAM_27._05._21.Configurations
             builder.HasData(
               new Address[]
               {
-                    new Address { Id = 1, District = "380123123", City = "Odesa", Street = "Central", House = "1F", Flat = "23"}, // StudentId = 1
-                    new Address { Id = 2, District = "380123123", City = "Kyiv", Street = "Central", House = "2C", Flat = "55"},
-                    new Address { Id = 3, District = "380123123", City = "Lviv", Street = "Central", House = "3B", Flat = "12"}
+                    new Address { Id = 1, District = "Kyivsky", City = "Odesa", Street = "Central", House = "1F", Flat = "23"}, // StudentId = 1
+                    new Address { Id = 2, District = "Solomensky", City = "Kyiv", Street = "Central", House = "2C", Flat = "55"},
+                    new Address { Id = 3, District = "Galician", City = "Lviv", Street = "Central", House = "3B", Flat = "12"}
               });
         }
     }

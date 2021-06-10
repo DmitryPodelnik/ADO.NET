@@ -41,6 +41,10 @@ namespace EXAM_27._05._21.Models
 
         public Leader Leader { get; set; }
 
+        public int? SpecialtyId { get; set; }
+        [ForeignKey("SpecialtyId")]
+        public virtual Specialty Specialty { get; set; }
+
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
