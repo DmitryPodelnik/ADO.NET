@@ -17,7 +17,7 @@ namespace EXAM_27._05._21
         public DbSet<AcademyPhone> AcademyPhones { get; set; }
         public DbSet<Academy> Academies { get; set; }
         public DbSet<Address> Addresses { get; set; }
-        public DbSet<Credit> Credits { get; set; }
+        public DbSet<Record> Records { get; set; }
         public DbSet<Gender> Genders { get; set; }
         public DbSet<Grade> Grades { get; set; }
         public DbSet<Group> Groups { get; set; }
@@ -55,7 +55,7 @@ namespace EXAM_27._05._21
             modelBuilder.ApplyConfiguration(new AcademyConfiguration());
             modelBuilder.ApplyConfiguration(new AcademyPhoneConfiguration());
             modelBuilder.ApplyConfiguration(new AddressConfiguration());
-            modelBuilder.ApplyConfiguration(new CreditConfiguration());
+            modelBuilder.ApplyConfiguration(new RecordConfiguration());
             modelBuilder.ApplyConfiguration(new GenderConfiguration());
             modelBuilder.ApplyConfiguration(new GradeConfiguration());
             modelBuilder.ApplyConfiguration(new GroupConfiguration());

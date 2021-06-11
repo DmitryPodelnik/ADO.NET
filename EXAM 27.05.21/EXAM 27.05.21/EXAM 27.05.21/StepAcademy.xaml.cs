@@ -49,6 +49,18 @@ namespace EXAM_27._05._21
             {
                 e.Column.Header = "Academy";
             }
+            else if (headername == "AcademyCity")
+            {
+                e.Column.Header = "Academy City";
+            }
+            else if (headername == "AcademyStreet")
+            {
+                e.Column.Header = "Academy Street";
+            }
+            else if (headername == "AcademyHouse")
+            {
+                e.Column.Header = "Academy House";
+            }
             else if (headername == "GroupId")
             {
                 e.Column.Header = "Group";

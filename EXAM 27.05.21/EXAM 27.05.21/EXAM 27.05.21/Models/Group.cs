@@ -38,7 +38,6 @@ namespace EXAM_27._05._21.Models
         public List<Lecturer> Lecturers { get; set; } = new();
 
         public List<Student> Students { get; set; } = new();
-
         public Leader Leader { get; set; }
 
         public int? SpecialtyId { get; set; }

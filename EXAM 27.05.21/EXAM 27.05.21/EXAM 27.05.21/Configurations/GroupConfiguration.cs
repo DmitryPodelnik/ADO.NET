@@ -16,9 +16,9 @@ namespace EXAM_27._05._21.Configurations
             builder.HasData(
               new Group[]
               {
-                    new Group { Id = 1, Name = "КН-П-181", Class = 3,}, ///LeaderId = 1
-                    new Group { Id = 2, Name = "КН-П-191", Class = 2,},
-                    new Group { Id = 3, Name = "КН-П-182", Class = 3,}
+                    new Group { Id = 1, Name = "КН-П-181", Class = 3, SpecialtyId = 1}, 
+                    new Group { Id = 2, Name = "КН-П-191", Class = 2, SpecialtyId = 2},
+                    new Group { Id = 3, Name = "КН-П-182", Class = 3, SpecialtyId = 3}
               });
         }
     }

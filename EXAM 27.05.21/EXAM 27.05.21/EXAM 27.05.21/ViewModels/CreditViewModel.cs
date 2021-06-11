@@ -12,9 +12,9 @@ namespace EXAM_27._05._21.ViewModels
 {
     class CreditViewModel : INotifyPropertyChanged
     {
-        private Credit _selectedCredit;
-        public ObservableCollection<Credit> Credits { get; set; }
-        public Credit SelectedCredit
+        private Record _selectedCredit;
+        public ObservableCollection<Record> Credits { get; set; }
+        public Record SelectedCredit
         {
             get { return _selectedCredit; }
             set

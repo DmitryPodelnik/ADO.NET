@@ -16,9 +16,9 @@ namespace EXAM_27._05._21.Configurations
             builder.HasData(
               new Lecturer[]
               {
-                    new Lecturer { Id = 1, FirstName = "Dmitry", LastName = "Pupkin", BirthDate = Convert.ToDateTime("22/10/1981")},
-                    new Lecturer { Id = 2, FirstName = "Vladislav", LastName = "Ivanov", BirthDate = Convert.ToDateTime("15/05/1985")},
-                    new Lecturer { Id = 3, FirstName = "Ivan", LastName = "Petrov", BirthDate = Convert.ToDateTime("08/08/1991")}
+                    new Lecturer { Id = 1, FirstName = "Dmitry", LastName = "Pupkin", BirthDate = Convert.ToDateTime("22/10/1981"), GroupId = 1},
+                    new Lecturer { Id = 2, FirstName = "Vladislav", LastName = "Ivanov", BirthDate = Convert.ToDateTime("15/05/1985"), GroupId = 2},
+                    new Lecturer { Id = 3, FirstName = "Ivan", LastName = "Petrov", BirthDate = Convert.ToDateTime("08/08/1991"), GroupId = 3}
               });
         }
     }

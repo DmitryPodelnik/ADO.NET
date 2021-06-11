@@ -13,7 +13,7 @@ namespace EXAM_27._05._21.ViewModels
     class GenderViewModel : INotifyPropertyChanged
     {
         private Gender _selectedGender;
-        public ObservableCollection<Credit> Genders { get; set; }
+        public ObservableCollection<Record> Genders { get; set; }
         public Gender SelectedGender
         {
             get { return _selectedGender; }

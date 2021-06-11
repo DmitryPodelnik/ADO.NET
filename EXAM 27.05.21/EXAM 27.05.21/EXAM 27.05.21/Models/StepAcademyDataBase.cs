@@ -49,7 +49,7 @@ namespace EXAM_27._05._21.Models
             context.Academies.Load();
             context.AcademyPhones.Load();
             context.Addresses.Load();
-            context.Credits.Load();
+            context.Records.Load();
             context.Genders.Load();
             context.Grades.Load();
             context.Groups.Load();
