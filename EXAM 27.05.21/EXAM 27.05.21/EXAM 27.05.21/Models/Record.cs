@@ -23,13 +23,16 @@ namespace EXAM_27._05._21.Models
         [Required]
         public byte Coins { get; set; }
         [Required]
-        public byte Class { get; set; }
+        public byte Course { get; set; }
 
         [StringLength(50)]
         [Required]
         // [Column(TypeName = "Credit")]
         public string Subject { get; set; }
-        //public StudentGrade StudentGrade { get; set; }
+
+        public int? StudentGradeId { get; set; }
+        [ForeignKey("StudentGradeId")]
+        public virtual StudentGrade StudentGrade { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")

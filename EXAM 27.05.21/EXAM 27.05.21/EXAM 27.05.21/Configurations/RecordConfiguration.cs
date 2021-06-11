@@ -16,9 +16,10 @@ namespace EXAM_27._05._21.Configurations
             builder.HasData(
               new Record[]
               {
-                    new Record { Id = 1, Subject = "Math", Coins = 20, Class = 1},
-                    new Record { Id = 2, Subject = "C++", Coins = 15, Class = 2},
-                    new Record { Id = 3, Subject = "C#", Coins = 40, Class = 3}
+                    new Record { Id = 1, Subject = "Math", Coins = 20, Course = 1},
+                    new Record { Id = 2, Subject = "C++", Coins = 15, Course = 2},
+                    new Record { Id = 3, Subject = "C#", Coins = 40, Course = 3},
+                    new Record { Id = 4, Subject = "JavaScript", Coins = 40, Course = 3}
               });
         }
     }

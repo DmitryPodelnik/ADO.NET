@@ -40,7 +40,7 @@ namespace EXAM_27._05._21
                 headername == "Academy" || headername == "Student" || headername == "Lecturers" ||
                 headername == "Leader" || headername == "Gender" || headername == "Group" || 
                 headername == "Address" || headername == "Grades" || headername == "Specialty" ||
-                headername == "StudentGrade")
+                headername == "StudentGrade" || headername == "StudentGradeId")
             {
                 e.Cancel = true;
             }
@@ -76,10 +76,6 @@ namespace EXAM_27._05._21
             else if (headername == "SpecialtyId")
             {
                 e.Column.Header = "Specialty";
-            }
-            else if (headername == "StudentGradeId")
-            {
-                e.Column.Header = "Student Grade";
             }
             else if (headername == "StudentId")
             {

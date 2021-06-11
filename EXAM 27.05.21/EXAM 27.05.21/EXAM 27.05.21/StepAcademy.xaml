@@ -23,7 +23,7 @@
         <DataGrid x:Name="mainDataGrid" Grid.ColumnSpan="5" Grid.RowSpan="2" Margin="5 5 5 20"
                   ItemsSource="{Binding Academies}"
                   AutoGeneratingColumn="mainDataGrid_AutoGeneratingColumn"
-                  IsReadOnly="True">
+                  IsReadOnly="True" HorizontalContentAlignment="Center">
                   
         </DataGrid>
 
@@ -39,7 +39,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <ComboBox x:Name="chooseTable" Grid.Row="2" Height="20" Width="100" ItemsSource="{Binding Tables}" 
+            <ComboBox x:Name="chooseTable" Grid.Row="2" Height="20" Width="120" ItemsSource="{Binding Tables}" 
                       SelectedItem="{Binding SelectedTable}"
                       ></ComboBox>
             <Button x:Name="addButton" Grid.Row="3" Height="20" Width="90" Command="{Binding AddCommand}">Add</Button>

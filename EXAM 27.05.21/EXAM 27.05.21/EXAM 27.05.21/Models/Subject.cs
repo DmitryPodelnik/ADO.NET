@@ -22,7 +22,7 @@ namespace EXAM_27._05._21.Models
         public string Name { get; set; }
 
         [Required]
-        public byte Class { get; set; }
+        public byte Course { get; set; }
 
         [Required]
         public short Hours { get; set; }

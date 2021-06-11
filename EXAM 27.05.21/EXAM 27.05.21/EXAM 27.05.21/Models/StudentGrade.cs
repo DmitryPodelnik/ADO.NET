@@ -32,7 +32,7 @@ namespace EXAM_27._05._21.Models
         public Student Student { get; set; }
 
         public List<Grade> Grades { get; set; } = new();
-
+        public List<Record> Records { get; set; } = new();
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")
