@@ -24,6 +24,11 @@ namespace EXAM_27._05._21.Models
 
         public List<Student> Students { get; set; } = new();
 
+        public override string ToString()
+        {
+            return Id + ";" + Type;
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {

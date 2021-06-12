@@ -28,6 +28,11 @@ namespace EXAM_27._05._21.Models
         public Student Student { get; set; }
         public Group Group { get; set; }
 
+        public override string ToString()
+        {
+            return Id + ";" + SpecialtyCode + ";" + Name;
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {

@@ -44,6 +44,11 @@ namespace EXAM_27._05._21.Models
         [ForeignKey("SpecialtyId")]
         public virtual Specialty Specialty { get; set; }
 
+        public override string ToString()
+        {
+            return Id + ";" + Name + ";" + Class + ";" + SpecialtyId;
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {

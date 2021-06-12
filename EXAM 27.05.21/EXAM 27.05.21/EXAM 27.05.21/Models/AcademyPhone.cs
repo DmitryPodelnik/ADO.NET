@@ -35,6 +35,11 @@ namespace EXAM_27._05._21.Models
         [ForeignKey("AcademyId")]
         public virtual Academy Academy { get; set; }
 
+        public override string ToString()
+        {
+            return Id + ";" + Phone + ";" + AcademyId;
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {

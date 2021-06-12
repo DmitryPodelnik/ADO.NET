@@ -164,14 +164,11 @@ namespace EXAM_27._05._21.ViewModels
         {
             get
             {
-                return _deleteCommand;
-                //return _deleteCommand ??
-                //  (_deleteCommand = new RelayCommand(obj =>
-                //  {
-                //      Phone phone = new Phone();
-                //      Phones.Insert(0, phone);
-                //      SelectedPhone = phone;
-                //  }));
+                return _deleteCommand ??
+                    (_deleteCommand = new RelayCommand(obj =>
+                    {
+                        _database.DeleteItem(SelectedTable, _mainWindow);
+                    }));
             }
         }
 

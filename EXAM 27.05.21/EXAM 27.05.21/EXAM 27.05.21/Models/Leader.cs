@@ -35,6 +35,11 @@ namespace EXAM_27._05._21.Models
         [ForeignKey("GroupId")]
         public virtual Group Group { get; set; }
 
+        public override string ToString()
+        {
+            return Id + ";" + StudentId + ";" + GroupId;
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {

@@ -27,6 +27,11 @@ namespace EXAM_27._05._21.Models
         [Required]
         public short Hours { get; set; }
 
+        public override string ToString()
+        {
+            return Id + ";" + Name + ";" + Course + ";" + Hours;
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {

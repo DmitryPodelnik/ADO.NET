@@ -43,6 +43,10 @@ namespace EXAM_27._05._21.Models
         // Просто поле, используемое как внешний ключ
         public List<Student> Students { get; set; } = new();
 
+        public override string ToString()
+        {
+            return Id + ";" + District + ";" + City + ";" + Street + ";" + House + ";" + Flat;
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")

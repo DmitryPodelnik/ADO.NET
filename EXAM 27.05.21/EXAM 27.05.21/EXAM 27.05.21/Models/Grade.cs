@@ -33,6 +33,11 @@ namespace EXAM_27._05._21.Models
         [ForeignKey("RecordId")]
         public virtual Record Record { get; set; }
 
+        public override string ToString()
+        {
+            return Id + ";" + Mark + ";" + Value + ";" + StudentGradeId + ";" + RecordId;
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {

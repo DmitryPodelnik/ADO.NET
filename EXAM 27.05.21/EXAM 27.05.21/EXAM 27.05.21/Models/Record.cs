@@ -34,6 +34,11 @@ namespace EXAM_27._05._21.Models
         [ForeignKey("StudentGradeId")]
         public virtual StudentGrade StudentGrade { get; set; }
 
+        public override string ToString()
+        {
+            return Id + ";" + Coins + ";" + Course + ";" + Subject + ";" + StudentGradeId;
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
