@@ -21,6 +21,11 @@ namespace EXAM_27._05._21.Configurations
                     new Grade { Id = 3, Mark = "C", Value = 78, StudentGradeId = 3, RecordId = 3},
                     new Grade { Id = 4, Mark = "D", Value = 65, StudentGradeId = 3, RecordId = 4}
               });
+
+            builder
+           .HasOne(p => p.StudentGrade)
+           .WithMany(t => t.Grades)
+           .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

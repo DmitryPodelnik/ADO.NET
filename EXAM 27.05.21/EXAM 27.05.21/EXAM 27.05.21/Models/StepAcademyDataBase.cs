@@ -13,6 +13,12 @@ using Microsoft.Extensions.Configuration;
 
 namespace EXAM_27._05._21.Models
 {
+    public enum Choses
+    {
+        YES = 6,
+        NO
+    }
+
     public class StepAcademyDataBase
     {
         private StepAcademyContext context;
@@ -80,19 +86,30 @@ namespace EXAM_27._05._21.Models
 
             return Tables;
         }
+        
+        public Choses IsConfirmed()
+        {
+            var result = MessageBox.Show("Are you sure to delete this item?", "Deleting item", MessageBoxButton.YesNo);
+
+            return (Choses)result;
+        }
 
         public async Task DeleteItem(string selectedTable, StepAcademy window)
         {
+            if (IsConfirmed() == Choses.NO)
+                return;
+
+
+
             int i = window.mainDataGrid.SelectedIndex;
             string stringItem = window.mainDataGrid.Items[i].ToString();  // this give you access to the row
             string stringId = null;
 
-            if (selectedTable != "Students" && selectedTable != "Academies' Phones" && selectedTable != "Students'Grades" &&
+            if (selectedTable != "Students" && selectedTable != "Students'Grades" && selectedTable != "Academies' Phones" &&
                 selectedTable != "Groups" && selectedTable != "Leaders" && selectedTable != "Lecturers")
                 stringId = stringItem.Substring(0, stringItem.IndexOf(";"));
             else
                 stringId = stringItem.Substring(7, 1);
-
 
             int id = Int32.Parse(stringId);
 
@@ -102,9 +119,17 @@ namespace EXAM_27._05._21.Models
 
                     var deleteAcademy = await Context.Academies.FirstOrDefaultAsync(a => a.Id == id);
                     if (deleteAcademy != null)
+                    {
                         Context.Academies.Remove(deleteAcademy);
 
-                    window.mainDataGrid.ItemsSource = await Context.Academies.ToListAsync();
+                        //
+                        // Сохранение изменений в БД
+                        //
+                        await context.SaveChangesAsync();
+
+                        /// refresh datagrid rows
+                        window.mainDataGrid.ItemsSource = await Context.Academies.ToListAsync();
+                    }
 
                     break;
 
@@ -112,9 +137,17 @@ namespace EXAM_27._05._21.Models
 
                     var deleteAcademyPhone = await Context.AcademyPhones.FirstOrDefaultAsync(a => a.Id == id);
                     if (deleteAcademyPhone != null)
+                    {
                         Context.AcademyPhones.Remove(deleteAcademyPhone);
 
-                    window.mainDataGrid.ItemsSource = await Context.AcademyPhones.ToListAsync();
+                        //
+                        // Сохранение изменений в БД
+                        //
+                        await context.SaveChangesAsync();
+
+                        /// refresh datagrid rows
+                        GetAllAcademyPhones(ref window);
+                    }
 
                     break;
 
@@ -122,9 +155,17 @@ namespace EXAM_27._05._21.Models
 
                     var deleteAddress = await Context.Addresses.FirstOrDefaultAsync(a => a.Id == id);
                     if (deleteAddress != null)
+                    {
                         Context.Addresses.Remove(deleteAddress);
 
-                    window.mainDataGrid.ItemsSource = await Context.Addresses.ToListAsync();
+                        //
+                        // Сохранение изменений в БД
+                        //
+                        await context.SaveChangesAsync();
+
+                        /// refresh datagrid rows
+                        window.mainDataGrid.ItemsSource = await Context.Addresses.ToListAsync();
+                    }
 
                     break;
 
@@ -132,9 +173,17 @@ namespace EXAM_27._05._21.Models
 
                     var deleteRecord = await Context.Records.FirstOrDefaultAsync(a => a.Id == id);
                     if (deleteRecord != null)
+                    {
                         Context.Records.Remove(deleteRecord);
 
-                    window.mainDataGrid.ItemsSource = await Context.Records.ToListAsync();
+                        //
+                        // Сохранение изменений в БД
+                        //
+                        await context.SaveChangesAsync();
+
+                        /// refresh datagrid rows
+                        window.mainDataGrid.ItemsSource = await Context.Records.ToListAsync();
+                    }
 
                     break;
 
@@ -142,9 +191,17 @@ namespace EXAM_27._05._21.Models
 
                     var deleteGender = await Context.Genders.FirstOrDefaultAsync(a => a.Id == id);
                     if (deleteGender != null)
+                    {
                         Context.Genders.Remove(deleteGender);
 
-                    window.mainDataGrid.ItemsSource = await Context.Genders.ToListAsync();
+                        //
+                        // Сохранение изменений в БД
+                        //
+                        await context.SaveChangesAsync();
+
+                        /// refresh datagrid rows
+                        window.mainDataGrid.ItemsSource = await Context.Genders.ToListAsync();
+                    }
 
                     break;
 
@@ -152,9 +209,17 @@ namespace EXAM_27._05._21.Models
 
                     var deleteGroup = await Context.Groups.FirstOrDefaultAsync(a => a.Id == id);
                     if (deleteGroup != null)
+                    {
                         Context.Groups.Remove(deleteGroup);
 
-                    window.mainDataGrid.ItemsSource = await Context.Groups.ToListAsync();
+                        //
+                        // Сохранение изменений в БД
+                        //
+                        await context.SaveChangesAsync();
+
+                        /// refresh datagrid rows
+                        GetAllGroups(ref window);
+                    }
 
                     break;
 
@@ -162,9 +227,17 @@ namespace EXAM_27._05._21.Models
 
                     var deleteLeader = await Context.Leaders.FirstOrDefaultAsync(a => a.Id == id);
                     if (deleteLeader != null)
+                    {
                         Context.Leaders.Remove(deleteLeader);
 
-                    window.mainDataGrid.ItemsSource = await Context.Leaders.ToListAsync();
+                        //
+                        // Сохранение изменений в БД
+                        //
+                        await context.SaveChangesAsync();
+
+                        /// refresh datagrid rows
+                        GetAllLeaders(ref window);
+                    }
 
                     break;
 
@@ -172,9 +245,17 @@ namespace EXAM_27._05._21.Models
 
                     var deleteLecturer = await Context.Lecturers.FirstOrDefaultAsync(a => a.Id == id);
                     if (deleteLecturer != null)
+                    {
                         Context.Lecturers.Remove(deleteLecturer);
 
-                    window.mainDataGrid.ItemsSource = await Context.Lecturers.ToListAsync();
+                        //
+                        // Сохранение изменений в БД
+                        //
+                        await context.SaveChangesAsync();
+
+                        /// refresh datagrid rows
+                        GetAllLecturers(ref window);
+                    }
 
                     break;
 
@@ -182,9 +263,17 @@ namespace EXAM_27._05._21.Models
 
                     var deleteSpecialty = await Context.Specialties.FirstOrDefaultAsync(a => a.Id == id);
                     if (deleteSpecialty != null)
+                    {
                         Context.Specialties.Remove(deleteSpecialty);
 
-                    window.mainDataGrid.ItemsSource = await Context.Specialties.ToListAsync();
+                        //
+                        // Сохранение изменений в БД
+                        //
+                        await context.SaveChangesAsync();
+
+                        /// refresh datagrid rows
+                        window.mainDataGrid.ItemsSource = await Context.Specialties.ToListAsync();
+                    }
 
                     break;
 
@@ -192,9 +281,17 @@ namespace EXAM_27._05._21.Models
 
                     var deleteStudent = await Context.Students.FirstOrDefaultAsync(a => a.Id == id);
                     if (deleteStudent != null)
+                    {
                         Context.Students.Remove(deleteStudent);
 
-                    window.mainDataGrid.ItemsSource = await Context.Students.ToListAsync();
+                        //
+                        // Сохранение изменений в БД
+                        //
+                        await context.SaveChangesAsync();
+
+                        /// refresh datagrid rows
+                        GetAllStudents(ref window);
+                    }
 
                     break;
 
@@ -202,9 +299,17 @@ namespace EXAM_27._05._21.Models
 
                     var deleteStudentGrade = await Context.StudentGrades.FirstOrDefaultAsync(a => a.Id == id);
                     if (deleteStudentGrade != null)
+                    {
                         Context.StudentGrades.Remove(deleteStudentGrade);
 
-                    window.mainDataGrid.ItemsSource = await Context.StudentGrades.ToListAsync();
+                        //
+                        // Сохранение изменений в БД
+                        //
+                        await context.SaveChangesAsync();
+
+                        /// refresh datagrid rows
+                        GetAllStudentsGrades(ref window);
+                    }
 
                     break;
 
@@ -212,18 +317,21 @@ namespace EXAM_27._05._21.Models
 
                     var deleteSubject = await Context.Subjects.FirstOrDefaultAsync(a => a.Id == id);
                     if (deleteSubject != null)
+                    {
                         Context.Subjects.Remove(deleteSubject);
 
-                    window.mainDataGrid.ItemsSource = await Context.Subjects.ToListAsync();
+                        //
+                        // Сохранение изменений в БД
+                        //
+                        await context.SaveChangesAsync();
+
+                        /// refresh datagrid rows
+                        window.mainDataGrid.ItemsSource = await Context.Subjects.ToListAsync();
+                    }
 
                     break;
             }
-            window.mainDataGrid.Items.Refresh();
 
-            //
-            // Сохранение изменений в БД
-            //
-            await context.SaveChangesAsync();
 
         }
 

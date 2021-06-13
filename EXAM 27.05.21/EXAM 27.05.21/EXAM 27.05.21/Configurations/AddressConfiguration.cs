@@ -20,6 +20,11 @@ namespace EXAM_27._05._21.Configurations
                     new Address { Id = 2, District = "Solomensky", City = "Kyiv", Street = "Central", House = "2C", Flat = "55"},
                     new Address { Id = 3, District = "Galician", City = "Lviv", Street = "Central", House = "3B", Flat = "12"}
               });
+
+            builder
+            .HasMany(p => p.Students)
+            .WithOne(t => t.Address)
+            .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

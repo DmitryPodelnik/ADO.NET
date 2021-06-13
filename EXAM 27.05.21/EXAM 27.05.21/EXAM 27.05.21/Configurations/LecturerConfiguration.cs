@@ -20,6 +20,11 @@ namespace EXAM_27._05._21.Configurations
                     new Lecturer { Id = 2, FirstName = "Vladislav", LastName = "Ivanov", BirthDate = Convert.ToDateTime("15/05/1985"), GroupId = 2},
                     new Lecturer { Id = 3, FirstName = "Ivan", LastName = "Petrov", BirthDate = Convert.ToDateTime("08/08/1991"), GroupId = 3}
               });
+
+            builder
+           .HasOne(p => p.Group)
+           .WithMany(t => t.Lecturers)
+           .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

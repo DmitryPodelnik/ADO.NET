@@ -20,6 +20,16 @@ namespace EXAM_27._05._21.Configurations
                     new Leader { Id = 2, StudentId = 2, GroupId = 2},
                     new Leader { Id = 3, StudentId = 3, GroupId = 3}
               });
+
+            builder
+           .HasOne(p => p.Group)
+           .WithOne(t => t.Leader)
+           .OnDelete(DeleteBehavior.Restrict);
+
+            builder
+           .HasOne(p => p.Student)
+           .WithOne(t => t.Leader)
+           .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

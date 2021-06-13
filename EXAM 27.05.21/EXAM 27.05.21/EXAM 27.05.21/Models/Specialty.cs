@@ -26,7 +26,7 @@ namespace EXAM_27._05._21.Models
         public string Name { get; set; }
 
         public Student Student { get; set; }
-        public Group Group { get; set; }
+        public List<Group> Groups { get; set; } = new();
 
         public override string ToString()
         {

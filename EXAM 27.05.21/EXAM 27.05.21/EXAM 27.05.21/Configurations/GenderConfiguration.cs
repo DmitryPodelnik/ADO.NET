@@ -19,6 +19,11 @@ namespace EXAM_27._05._21.Configurations
                     new Gender { Id = 1, Type = "Male"},
                     new Gender { Id = 2, Type = "Female"}
               });
+
+            builder
+            .HasMany(p => p.Students)
+            .WithOne(t => t.Gender)
+            .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }

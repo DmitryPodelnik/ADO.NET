@@ -26,6 +26,21 @@ namespace EXAM_27._05._21.Configurations
                                   GradeBookNumber = "101003", Note = "-", Phone = "380501231233", Email = "1235@gmail.com", AdmissionYear = 2017,
                                   GroupId = 2, GenderId = 1, AddressId = 3}
               });
+
+            builder
+           .HasOne(p => p.Group)
+           .WithMany(t => t.Students)
+           .OnDelete(DeleteBehavior.Restrict);
+
+            builder
+           .HasOne(p => p.Gender)
+           .WithMany(t => t.Students)
+           .OnDelete(DeleteBehavior.Restrict);
+
+            builder
+           .HasOne(p => p.Address)
+           .WithMany(t => t.Students)
+           .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

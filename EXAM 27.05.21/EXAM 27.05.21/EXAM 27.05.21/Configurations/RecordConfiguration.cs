@@ -21,6 +21,11 @@ namespace EXAM_27._05._21.Configurations
                     new Record { Id = 3, Subject = "C#", Coins = 40, Course = 3},
                     new Record { Id = 4, Subject = "JavaScript", Coins = 40, Course = 3}
               });
+
+            builder
+            .HasOne(p => p.StudentGrade)
+            .WithMany(t => t.Records)
+            .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

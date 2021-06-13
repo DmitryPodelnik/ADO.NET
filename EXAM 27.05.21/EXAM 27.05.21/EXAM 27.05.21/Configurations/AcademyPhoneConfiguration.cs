@@ -20,6 +20,11 @@ namespace EXAM_27._05._21.Configurations
                     new AcademyPhone { Id = 2, Phone = "380123124", AcademyId = 2},
                     new AcademyPhone { Id = 3, Phone = "380123125", AcademyId = 3}
               });
+
+            builder
+           .HasOne(p => p.Academy)
+           .WithMany(t => t.AcademyPhones)
+           .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
