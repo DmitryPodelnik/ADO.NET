@@ -12,21 +12,24 @@ namespace EXAM_27._05._21.ViewModels
 {
     class GroupViewModel : INotifyPropertyChanged
     {
-        private Group _selectedGroup;
-        public ObservableCollection<Group> Groups { get; set; }
-        public Group SelectedGroup
+        private StepAcademyDataBase _database = new();
+
+        private RelayCommand _saveCommand;
+        public RelayCommand SaveCommand
         {
-            get { return _selectedGroup; }
-            set
+            get
             {
-                _selectedGroup = value;
-                OnPropertyChanged("SelectedGroup");
+                return _saveCommand =
+                (_saveCommand = new RelayCommand(obj =>
+                {
+
+                }));
             }
         }
 
         public GroupViewModel()
         {
-            Groups = new();
+            
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

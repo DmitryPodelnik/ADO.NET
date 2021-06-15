@@ -12,21 +12,24 @@ namespace EXAM_27._05._21.ViewModels
 {
     class AddressViewModel : INotifyPropertyChanged
     {
-        private Address _selectedAddress;
-        public ObservableCollection<Address> Addresses { get; set; }
-        public Address SelectedAddress
+        private StepAcademyDataBase _database = new();
+
+        private RelayCommand _saveCommand;
+        public RelayCommand SaveCommand
         {
-            get { return _selectedAddress; }
-            set
+            get
             {
-                _selectedAddress = value;
-                OnPropertyChanged("SelectedAddress");
+                return _saveCommand =
+                (_saveCommand = new RelayCommand(obj =>
+                {
+
+                }));
             }
         }
 
         public AddressViewModel()
         {
-            Addresses = new();
+           
         }
 
 

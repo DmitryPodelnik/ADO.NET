@@ -12,21 +12,24 @@ namespace EXAM_27._05._21.ViewModels
 {
     class StudentGradeViewModel : INotifyPropertyChanged
     {
-        private StudentGrade _selectedStudentGrade;
-        public ObservableCollection<StudentGrade> StudentGrades { get; set; }
-        public StudentGrade SelectedStudentGrade
+        private StepAcademyDataBase _database = new();
+
+        private RelayCommand _saveCommand;
+        public RelayCommand SaveCommand
         {
-            get { return _selectedStudentGrade; }
-            set
+            get
             {
-                _selectedStudentGrade = value;
-                OnPropertyChanged("SelectedStudentGrade");
+                return _saveCommand =
+                (_saveCommand = new RelayCommand(obj =>
+                {
+
+                }));
             }
         }
 
         public StudentGradeViewModel()
         {
-            StudentGrades = new();
+            
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

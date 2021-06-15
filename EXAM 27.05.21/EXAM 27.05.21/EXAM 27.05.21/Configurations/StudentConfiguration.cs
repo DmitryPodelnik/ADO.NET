@@ -27,20 +27,20 @@ namespace EXAM_27._05._21.Configurations
                                   GroupId = 2, GenderId = 1, AddressId = 3}
               });
 
-            builder
-           .HasOne(p => p.Group)
-           .WithMany(t => t.Students)
-           .OnDelete(DeleteBehavior.Restrict);
+            // builder
+            //.HasOne(p => p.Group)
+            //.WithMany(t => t.Students)
+            //.OnDelete(DeleteBehavior.Restrict);
 
-            builder
-           .HasOne(p => p.Gender)
-           .WithMany(t => t.Students)
-           .OnDelete(DeleteBehavior.Restrict);
+            // builder
+            //.HasOne(p => p.Gender)
+            //.WithMany(t => t.Students)
+            //.OnDelete(DeleteBehavior.Restrict);
 
-            builder
-           .HasOne(p => p.Address)
-           .WithMany(t => t.Students)
-           .OnDelete(DeleteBehavior.Restrict);
+           // builder
+           //.HasOne(p => p.Address)
+           //.WithMany(t => t.Students)
+           //.OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

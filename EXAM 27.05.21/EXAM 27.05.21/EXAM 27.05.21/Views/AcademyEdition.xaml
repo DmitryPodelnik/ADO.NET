@@ -1,0 +1,43 @@
+﻿<Window x:Class="EXAM_27._05._21.AcademyEdition"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EXAM_27._05._21"
+        mc:Ignorable="d"
+        Title="Edition" Height="250" Width="400" Icon="/edition.png">
+    <Grid x:Name="mainGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Label Target="{Binding ElementName=TextBox1}" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Content="City" HorizontalContentAlignment="Center"></Label>
+        <TextBox x:Name="textCity" Grid.Row="3"  Grid.Column="1" Grid.ColumnSpan="2" Height="20" Width="90"></TextBox>
+
+        <Label Target="{Binding ElementName=TextBox1}" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" Content="Street" HorizontalContentAlignment="Center"></Label>
+        <TextBox x:Name="textStreet" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" Height="20" Width="90"></TextBox>
+
+        <Label Target="{Binding ElementName=TextBox1}" Grid.Row="2" Grid.Column="5" Grid.ColumnSpan="2" Content="House" HorizontalContentAlignment="Center"></Label>
+        <TextBox x:Name="textHouse" Grid.Row="3" Grid.Column="5" Grid.ColumnSpan="2" Height="20" Width="90"></TextBox>
+
+        <Button Content="Add" Height="20" Width="90" Grid.Row="4" Grid.ColumnSpan="8"
+                Command="{Binding SaveCommand}"></Button>
+
+    </Grid>
+</Window>

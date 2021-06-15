@@ -14,6 +14,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using EXAM_27._05._21.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -38,7 +39,7 @@ namespace EXAM_27._05._21.ViewModels
 
         // For future versions
         //
-        //private AcademyViewModel _academyViewModel;
+        private AcademyViewModel _academyViewModel;
         //private AddressViewModel _addressViewModel;
         //private CreditViewModel _creditViewModel;
         //private GenderViewModel _genderViewModel;
@@ -148,14 +149,13 @@ namespace EXAM_27._05._21.ViewModels
         {
             get
             {
-                return _addCommand;
-                //return _addCommand ??
-                //  (_addCommand = new RelayCommand(obj =>
-                //  {
-                //      Phone phone = new Phone();
-                //      Phones.Insert(0, phone);
-                //      SelectedPhone = phone;
-                //  }));
+                return _addCommand =
+                (_addCommand = new RelayCommand(obj =>
+                {
+                    AcademyEdition _window = new();
+                    _window.ShowDialog();
+                    _academyViewModel = new(_window.textCity.Text, _window.textStreet.Text, _window.textHouse.Text);
+                }));
             }
         }
 

@@ -21,10 +21,10 @@ namespace EXAM_27._05._21.Configurations
                     new Address { Id = 3, District = "Galician", City = "Lviv", Street = "Central", House = "3B", Flat = "12"}
               });
 
-            builder
-            .HasMany(p => p.Students)
-            .WithOne(t => t.Address)
-            .OnDelete(DeleteBehavior.Restrict);
+            //builder
+            //.HasMany(p => p.Students)
+            //.WithOne(t => t.Address)
+            //.OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

@@ -12,21 +12,24 @@ namespace EXAM_27._05._21.ViewModels
 {
     class GenderViewModel : INotifyPropertyChanged
     {
-        private Gender _selectedGender;
-        public ObservableCollection<Record> Genders { get; set; }
-        public Gender SelectedGender
+        private StepAcademyDataBase _database = new();
+
+        private RelayCommand _saveCommand;
+        public RelayCommand SaveCommand
         {
-            get { return _selectedGender; }
-            set
+            get
             {
-                _selectedGender = value;
-                OnPropertyChanged("SelectedGender");
+                return _saveCommand =
+                (_saveCommand = new RelayCommand(obj =>
+                {
+
+                }));
             }
         }
 
         public GenderViewModel()
         {
-            Genders = new();
+            
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

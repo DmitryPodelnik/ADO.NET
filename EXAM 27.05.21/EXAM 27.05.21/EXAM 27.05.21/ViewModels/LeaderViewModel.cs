@@ -12,21 +12,24 @@ namespace EXAM_27._05._21.ViewModels
 {
     class LeaderViewModel : INotifyPropertyChanged
     {
-        private Leader _selectedLeader;
-        public ObservableCollection<Leader> Leaders { get; set; }
-        public Leader SelectedGroup
+        private StepAcademyDataBase _database = new();
+
+        private RelayCommand _saveCommand;
+        public RelayCommand SaveCommand
         {
-            get { return _selectedLeader; }
-            set
+            get
             {
-                _selectedLeader = value;
-                OnPropertyChanged("SelectedLeader");
+                return _saveCommand =
+                (_saveCommand = new RelayCommand(obj =>
+                {
+
+                }));
             }
         }
 
         public LeaderViewModel()
         {
-            Leaders = new();
+
         }
 
 

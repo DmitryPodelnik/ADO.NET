@@ -12,21 +12,24 @@ namespace EXAM_27._05._21.ViewModels
 {
     class CreditViewModel : INotifyPropertyChanged
     {
-        private Record _selectedCredit;
-        public ObservableCollection<Record> Credits { get; set; }
-        public Record SelectedCredit
+        private StepAcademyDataBase _database = new();
+
+        private RelayCommand _saveCommand;
+        public RelayCommand SaveCommand
         {
-            get { return _selectedCredit; }
-            set
+            get
             {
-                _selectedCredit = value;
-                OnPropertyChanged("SelectedCredit");
+                return _saveCommand =
+                (_saveCommand = new RelayCommand(obj =>
+                {
+
+                }));
             }
         }
 
         public CreditViewModel()
         {
-            Credits = new();
+           
         }
 
 

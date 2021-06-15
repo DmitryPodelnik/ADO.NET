@@ -12,21 +12,24 @@ namespace EXAM_27._05._21.ViewModels
 {
     class SpecialtyViewModel : INotifyPropertyChanged
     {
-        private Specialty _selectedSpecialty;
-        public ObservableCollection<Specialty> Specialties { get; set; }
-        public Specialty SelectedSpecialty
+        private StepAcademyDataBase _database = new();
+
+        private RelayCommand _saveCommand;
+        public RelayCommand SaveCommand
         {
-            get { return _selectedSpecialty; }
-            set
+            get
             {
-                _selectedSpecialty = value;
-                OnPropertyChanged("SelectedSpecialty");
+                return _saveCommand =
+                (_saveCommand = new RelayCommand(obj =>
+                {
+
+                }));
             }
         }
 
         public SpecialtyViewModel()
         {
-            Specialties = new();
+           
         }
 
 

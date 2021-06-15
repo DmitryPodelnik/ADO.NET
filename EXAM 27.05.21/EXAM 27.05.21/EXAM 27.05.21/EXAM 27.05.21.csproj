@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="edition.png" />
     <None Remove="icon.png" />
   </ItemGroup>
 
@@ -21,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="edition.png" />
     <Resource Include="icon.png" />
   </ItemGroup>
 

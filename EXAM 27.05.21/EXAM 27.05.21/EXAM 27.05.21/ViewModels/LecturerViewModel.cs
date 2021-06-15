@@ -12,21 +12,24 @@ namespace EXAM_27._05._21.ViewModels
 {
     class LecturerViewModel : INotifyPropertyChanged
     {
-        private Lecturer _selectedLecturer;
-        public ObservableCollection<Lecturer> Lecturers { get; set; }
-        public Lecturer SelectedLecturer
+        private StepAcademyDataBase _database = new();
+
+        private RelayCommand _saveCommand;
+        public RelayCommand SaveCommand
         {
-            get { return _selectedLecturer; }
-            set
+            get
             {
-                _selectedLecturer = value;
-                OnPropertyChanged("SelectedLecturer");
+                return _saveCommand =
+                (_saveCommand = new RelayCommand(obj =>
+                {
+
+                }));
             }
         }
 
         public LecturerViewModel()
         {
-            Lecturers = new();
+            
         }
 
 

@@ -12,21 +12,24 @@ namespace EXAM_27._05._21.ViewModels
 {
     class SubjectViewModel : INotifyPropertyChanged
     {
-        private Subject _selectedSubject;
-        public ObservableCollection<Subject> Subjects { get; set; }
-        public Subject SelectedSubject
+        private StepAcademyDataBase _database = new();
+
+        private RelayCommand _saveCommand;
+        public RelayCommand SaveCommand
         {
-            get { return _selectedSubject; }
-            set
+            get
             {
-                _selectedSubject = value;
-                OnPropertyChanged("SelectedSubject");
+                return _saveCommand =
+                (_saveCommand = new RelayCommand(obj =>
+                {
+
+                }));
             }
         }
 
         public SubjectViewModel()
         {
-            Subjects = new();
+            
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

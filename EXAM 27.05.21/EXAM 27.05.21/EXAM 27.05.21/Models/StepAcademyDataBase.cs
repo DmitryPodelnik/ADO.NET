@@ -86,7 +86,7 @@ namespace EXAM_27._05._21.Models
 
             return Tables;
         }
-        
+
         public Choses IsConfirmed()
         {
             var result = MessageBox.Show("Are you sure to delete this item?", "Deleting item", MessageBoxButton.YesNo);
@@ -337,19 +337,19 @@ namespace EXAM_27._05._21.Models
 
         public void GetAllLecturers(ref StepAcademy window)
         {
-             window.mainDataGrid.ItemsSource = Context.Lecturers
-                            .Join(
-                                    Context.Groups,
-                                    l => l.GroupId,
-                                    g => g.Id,
-                                    (l, g) => new
-                                    {
-                                        Id = l.Id,
-                                        FirstName = l.FirstName,
-                                        LastName = l.LastName,
-                                        BirthDate = l.BirthDate,
-                                        Class = g.Name
-                                    }).ToList();
+            window.mainDataGrid.ItemsSource = Context.Lecturers
+                           .Join(
+                                   Context.Groups,
+                                   l => l.GroupId,
+                                   g => g.Id,
+                                   (l, g) => new
+                                   {
+                                       Id = l.Id,
+                                       FirstName = l.FirstName,
+                                       LastName = l.LastName,
+                                       BirthDate = l.BirthDate,
+                                       Class = g.Name
+                                   }).ToList();
         }
 
         public void GetAllStudentsGrades(ref StepAcademy window)
@@ -385,9 +385,10 @@ namespace EXAM_27._05._21.Models
                                  }).ToList();
         }
 
-            public void GetAllGroups(ref StepAcademy window)
+        public void GetAllGroups(ref StepAcademy window)
         {
             window.mainDataGrid.ItemsSource = Context.Groups
+                             .Where(g => g.SpecialtyId != null)
                              .Join(
                                     Context.Specialties,
                                     g => g.SpecialtyId,
@@ -397,10 +398,10 @@ namespace EXAM_27._05._21.Models
                                         Id = g.Id,
                                         Name = g.Name,
                                         Class = g.Class,
-                                        Speciality = c.Name
+                                        Speciality = c.Name != null ? c.Name : "NULL"
                                     }).ToList();
         }
-            public void GetAllLeaders(ref StepAcademy window)
+        public void GetAllLeaders(ref StepAcademy window)
         {
             window.mainDataGrid.ItemsSource = Context.Leaders
                             .Join(
@@ -424,7 +425,7 @@ namespace EXAM_27._05._21.Models
                                             }).ToList();
         }
 
-            public void GetAllStudents(ref StepAcademy window)
+        public void GetAllStudents(ref StepAcademy window)
         {
             window.mainDataGrid.ItemsSource = Context.Students
                             .Join(
@@ -462,7 +463,7 @@ namespace EXAM_27._05._21.Models
                                                     AdmissionYear = g.AdmissionYear,
                                                     Class = gr.Name,
                                                     Sex = g.Sex,
-                                                    AddressId = g.AddressId
+                                                    AddressId = g.AddressId != null ? g.AddressId : 1
                                                 }).Join(
                                                             Context.Addresses,
                                                             g => g.AddressId,
@@ -480,7 +481,7 @@ namespace EXAM_27._05._21.Models
                                                                 AdmissionYear = g.AdmissionYear,
                                                                 Class = g.Class,
                                                                 Sex = g.Sex,
-                                                                Direction = addr.City + ", " + addr.District + ", " + addr.Street + ", " + addr.House + ", " + addr.Flat
+                                                                Direction = addr != null ? addr.City + ", " + addr.District + ", " + addr.Street + ", " + addr.House + ", " + addr.Flat : "NULL"
                                                             }).ToList();
         }
     }
