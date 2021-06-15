@@ -21,8 +21,8 @@ namespace EXAM_27._05._21.Models
 
     public class StepAcademyDataBase
     {
-        private StepAcademyContext context;
-        public StepAcademyContext Context
+        static private StepAcademyContext context;
+        static public StepAcademyContext Context
         {
             get => context;
             set

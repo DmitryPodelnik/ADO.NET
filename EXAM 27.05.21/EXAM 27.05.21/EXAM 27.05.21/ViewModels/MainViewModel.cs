@@ -16,6 +16,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using EXAM_27._05._21.Models;
+using EXAM_27._05._21.Views;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -34,23 +35,9 @@ namespace EXAM_27._05._21.ViewModels
             {
                 _selectedTable = value;
                 RefreshDataGrid(_selectedTable);
+                _mainWindow.addButton.IsEnabled = true;
             }
         }
-
-        // For future versions
-        //
-        private AcademyViewModel _academyViewModel;
-        //private AddressViewModel _addressViewModel;
-        //private CreditViewModel _creditViewModel;
-        //private GenderViewModel _genderViewModel;
-        //private GradeViewModel _gradeViewModel;
-        //private GroupDescription _groupViewModel;
-        //private LeaderViewModel _leaderViewModel;
-        //private LecturerViewModel _lecturerViewModel;
-        //private SpecialtyViewModel _specialtyViewModel;
-        //private StudentGradeViewModel _studentGradeViewModel;
-        //private StudentViewModel _studentViewModel;
-        //private SubjectViewModel _subjectViewModel;
 
         private StepAcademy _mainWindow = (StepAcademy)Application.Current.MainWindow;
 
@@ -71,7 +58,7 @@ namespace EXAM_27._05._21.ViewModels
             {
                 case "Academies":
 
-                    _mainWindow.mainDataGrid.ItemsSource = await _database.Context.Academies.ToListAsync();
+                    _mainWindow.mainDataGrid.ItemsSource = await StepAcademyDataBase.Context.Academies.ToListAsync();
 
                     break;
 
@@ -83,19 +70,19 @@ namespace EXAM_27._05._21.ViewModels
 
                 case "Addresses":
 
-                    _mainWindow.mainDataGrid.ItemsSource = await _database.Context.Addresses.ToListAsync();
+                    _mainWindow.mainDataGrid.ItemsSource = await StepAcademyDataBase.Context.Addresses.ToListAsync();
 
                     break;
 
                 case "Records":
 
-                    _mainWindow.mainDataGrid.ItemsSource = await _database.Context.Records.ToListAsync();
+                    _mainWindow.mainDataGrid.ItemsSource = await StepAcademyDataBase.Context.Records.ToListAsync();
 
                     break;
 
                 case "Genders":
 
-                    _mainWindow.mainDataGrid.ItemsSource = await _database.Context.Genders.ToListAsync();
+                    _mainWindow.mainDataGrid.ItemsSource = await StepAcademyDataBase.Context.Genders.ToListAsync();
 
                     break;
 
@@ -119,7 +106,7 @@ namespace EXAM_27._05._21.ViewModels
 
                 case "Specialties":
 
-                    _mainWindow.mainDataGrid.ItemsSource = await _database.Context.Specialties.ToListAsync();
+                    _mainWindow.mainDataGrid.ItemsSource = await StepAcademyDataBase.Context.Specialties.ToListAsync();
 
                     break;
 
@@ -137,7 +124,7 @@ namespace EXAM_27._05._21.ViewModels
 
                 case "Subjects":
 
-                    _mainWindow.mainDataGrid.ItemsSource = await _database.Context.Subjects.ToListAsync();
+                    _mainWindow.mainDataGrid.ItemsSource = await StepAcademyDataBase.Context.Subjects.ToListAsync();
 
                     break;
             }
@@ -152,9 +139,7 @@ namespace EXAM_27._05._21.ViewModels
                 return _addCommand =
                 (_addCommand = new RelayCommand(obj =>
                 {
-                    AcademyEdition _window = new();
-                    _window.ShowDialog();
-                    _academyViewModel = new(_window.textCity.Text, _window.textStreet.Text, _window.textHouse.Text);
+                    AddItem();
                 }));
             }
         }
@@ -178,16 +163,111 @@ namespace EXAM_27._05._21.ViewModels
             get
             {
                 return _editCommand;
-                //return _editCommand ??
-                //  (_editCommand = new RelayCommand(obj =>
-                //  {
-                //      Phone phone = new Phone();
-                //      Phones.Insert(0, phone);
-                //      SelectedPhone = phone;
-                //  }));
+
             }
         }
 
+        private void AddItem()
+        {
+            switch (SelectedTable)
+            {
+                case "Academies":
+                    {
+                        AcademyEdition _window = new();
+                        _window.ShowDialog();
+                    }
+
+                    break;
+
+                case "Academies' Phones":
+                    {
+
+                    }
+
+                    break;
+
+                case "Addresses":
+                    {
+                        AddressEdition _window = new();
+                        _window.ShowDialog();
+                    }
+
+
+                    break;
+
+                case "Records":
+                    {
+
+                    }
+
+
+                    break;
+
+                case "Genders":
+                    {
+
+                    }
+
+
+                    break;
+
+                case "Groups":
+                    {
+
+                    }
+
+
+                    break;
+
+                case "Leaders":
+                    {
+
+                    }
+
+
+                    break;
+
+                case "Lecturers":
+                    {
+
+                    }
+
+
+                    break;
+
+                case "Specialties":
+                    {
+
+                    }
+
+
+                    break;
+
+                case "Students":
+                    {
+
+                    }
+
+
+                    break;
+
+                case "Students'Grades":
+                    {
+
+                    }
+
+
+                    break;
+
+                case "Subjects":
+                    {
+
+                    }
+
+
+                    break;
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")

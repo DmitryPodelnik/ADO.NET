@@ -14,11 +14,9 @@ namespace EXAM_27._05._21
 {
     class AcademyViewModel : INotifyPropertyChanged
     {
-        private StepAcademyDataBase _database = new();
+        //private StepAcademyDataBase _database = new();
         private StepAcademy _mainWindow = (StepAcademy)Application.Current.MainWindow;
-        string _city;
-        string _street;
-        string _house;
+        private AcademyEdition _window;
 
         private RelayCommand _saveCommand;
         public RelayCommand SaveCommand
@@ -28,20 +26,37 @@ namespace EXAM_27._05._21
                 return _saveCommand =
                 (_saveCommand = new RelayCommand(obj =>
                 {
-                    AddAcademy(_city, _street, _house);
+                    AddItem();
                 }));
             }
         }
-
-        public AcademyViewModel()
+        public AcademyViewModel(AcademyEdition window)
         {
-            
+            _window = window;
         }
-        public AcademyViewModel(string city, string street, string house)
+
+        private RelayCommand _closeWindow;
+        public RelayCommand CloseWindow
         {
-            _city = city;
-            _street = street;
-            _house = house;
+            get
+            {
+                return _closeWindow =
+                (_closeWindow = new RelayCommand(obj =>
+                {
+                    _window.Close();
+                }));
+            }
+        }
+        public void AddItem()
+        {
+            switch (((StepAcademy)Application.Current.MainWindow).chooseTable.SelectedItem.ToString())
+            {
+                case "Academies":
+
+                    AddAcademy(_window.textCity.Text, _window.textStreet.Text, _window.textHouse.Text);
+
+                    break;            
+            }
         }
 
         public async Task AddAcademy(string city, string street, string house)
@@ -53,8 +68,19 @@ namespace EXAM_27._05._21
                 House = house,
                 AcademyPhones = null
             };
-            await _database.Context.Academies.AddAsync(newAcademy);
-            await _database.Context.SaveChangesAsync();
+            await StepAcademyDataBase.Context.Academies.AddAsync(newAcademy);
+            await StepAcademyDataBase.Context.SaveChangesAsync();
+
+            MessageBox.Show("A new academy has been successfully added!");
+
+            ClearTextBoxes();
+
+            void ClearTextBoxes()
+            {
+                _window.textCity.Text = "";
+                _window.textStreet.Text = "";
+                _window.textHouse.Text = "";
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

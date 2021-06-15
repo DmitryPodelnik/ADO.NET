@@ -40,7 +40,7 @@ namespace EXAM_27._05._21
                 headername == "Academy" || headername == "Student" || headername == "Lecturers" ||
                 headername == "Leader" || headername == "Gender" || headername == "Group" || 
                 headername == "Address" || headername == "Grades" || headername == "Specialty" ||
-                headername == "StudentGrade" || headername == "StudentGradeId")
+                headername == "StudentGrade" || headername == "StudentGradeId" || headername == "Groups")
             {
                 e.Cancel = true;
             }
@@ -80,6 +80,20 @@ namespace EXAM_27._05._21
             else if (headername == "StudentId")
             {
                 e.Column.Header = "Student";
+            }
+        }
+
+        private void mainDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (mainDataGrid.SelectedItem != null)
+            {
+                deleteButton.IsEnabled = true;
+                editButton.IsEnabled = true;
+            }
+            else
+            {
+                deleteButton.IsEnabled = false;
+                editButton.IsEnabled = false;
             }
         }
     }

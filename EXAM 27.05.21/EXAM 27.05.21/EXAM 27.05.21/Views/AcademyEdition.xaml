@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EXAM_27._05._21"
         mc:Ignorable="d"
-        Title="Edition" Height="250" Width="400" Icon="/edition.png">
+        Title="Academy Edition" Height="250" Width="400" Icon="/edition.png" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="ThreeDBorderWindow" Closing="Window_Closing">
     <Grid x:Name="mainGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -36,8 +36,10 @@
         <Label Target="{Binding ElementName=TextBox1}" Grid.Row="2" Grid.Column="5" Grid.ColumnSpan="2" Content="House" HorizontalContentAlignment="Center"></Label>
         <TextBox x:Name="textHouse" Grid.Row="3" Grid.Column="5" Grid.ColumnSpan="2" Height="20" Width="90"></TextBox>
 
-        <Button Content="Add" Height="20" Width="90" Grid.Row="4" Grid.ColumnSpan="8"
+        <Button Content="Add" Height="20" Width="90" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2"
                 Command="{Binding SaveCommand}"></Button>
+        <Button Content="Exit" Height="20" Width="90" Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2"
+                Command="{Binding CloseWindow}"></Button>
 
     </Grid>
 </Window>

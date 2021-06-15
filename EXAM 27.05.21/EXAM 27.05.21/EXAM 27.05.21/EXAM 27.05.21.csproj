@@ -10,6 +10,7 @@
   <ItemGroup>
     <None Remove="edition.png" />
     <None Remove="icon.png" />
+    <None Remove="Views\edition.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,6 +25,7 @@
   <ItemGroup>
     <Resource Include="edition.png" />
     <Resource Include="icon.png" />
+    <Resource Include="Views\edition.png" />
   </ItemGroup>
 
 </Project>
