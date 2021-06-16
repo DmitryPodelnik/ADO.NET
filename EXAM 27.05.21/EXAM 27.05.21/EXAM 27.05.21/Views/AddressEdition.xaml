@@ -30,19 +30,19 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Label Target="{Binding ElementName=TextBox1}" Grid.Row="2" Grid.ColumnSpan="2" Content="District" HorizontalContentAlignment="Center"></Label>
+        <Label Target="{Binding ElementName=textDistrict}" Grid.Row="2" Grid.ColumnSpan="2" Content="District" HorizontalContentAlignment="Center"></Label>
         <TextBox x:Name="textDistrict" Grid.Row="3" Grid.ColumnSpan="2" Height="20" Width="90"></TextBox>
 
-        <Label Target="{Binding ElementName=TextBox1}" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Content="City" HorizontalContentAlignment="Center"></Label>
+        <Label Target="{Binding ElementName=textCity}" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Content="City" HorizontalContentAlignment="Center"></Label>
         <TextBox x:Name="textCity" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Height="20" Width="90"></TextBox>
 
-        <Label Target="{Binding ElementName=TextBox1}" Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2" Content="Street" HorizontalContentAlignment="Center"></Label>
+        <Label Target="{Binding ElementName=textStreet}" Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2" Content="Street" HorizontalContentAlignment="Center"></Label>
         <TextBox x:Name="textStreet" Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2" Height="20" Width="90"></TextBox>
 
-        <Label Target="{Binding ElementName=TextBox1}" Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="2" Content="House" HorizontalContentAlignment="Center"></Label>
+        <Label Target="{Binding ElementName=textHouse}" Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="2" Content="House" HorizontalContentAlignment="Center"></Label>
         <TextBox x:Name="textHouse" Grid.Row="3" Grid.Column="6" Grid.ColumnSpan="2" Height="20" Width="90"></TextBox>
 
-        <Label Target="{Binding ElementName=TextBox1}" Grid.Row="2" Grid.Column="8" Grid.ColumnSpan="2" Content="Flat" HorizontalContentAlignment="Center"></Label>
+        <Label Target="{Binding ElementName=textFlat}" Grid.Row="2" Grid.Column="8" Grid.ColumnSpan="2" Content="Flat" HorizontalContentAlignment="Center"></Label>
         <TextBox x:Name="textFlat" Grid.Row="3" Grid.Column="8" Grid.ColumnSpan="2" Height="20" Width="90"></TextBox>
 
         <Button Content="Add" Height="20" Width="90" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2"

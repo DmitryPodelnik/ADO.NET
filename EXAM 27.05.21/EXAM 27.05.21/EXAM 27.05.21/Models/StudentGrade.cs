@@ -21,22 +21,24 @@ namespace EXAM_27._05._21.Models
         // Задаем правила сопоставления классов модели с таблицами БД.
 
         // Просто поле, используемое как внешний ключ
-        public int? StudentId { get; set; }
+        //public int? StudentId { get; set; }
         // Навигационное свойство
         //
         // По умолчанию для навигационного свойства использовалось бы название ****
         // в соответствии с соглашениями об именах полей в EF. Но поскольку я хочу,
         // чтобы поле, являющееся внешним ключом, называлось в таблице не ****,
         // а StudentId, то использую атрибут [ForeignKey] с нужным мне именем.
-        [ForeignKey("StudentId")]
-        public Student Student { get; set; }
+        //[ForeignKey("StudentId")]
+        //public Student Student { get; set; }
 
+        public List<Student> Students { get; set; } = new();
         public List<Grade> Grades { get; set; } = new();
         public List<Record> Records { get; set; } = new();
 
         public override string ToString()
         {
-            return Id + ";" + StudentId;
+            //return Id + ";" + StudentId;
+            return Id.ToString();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

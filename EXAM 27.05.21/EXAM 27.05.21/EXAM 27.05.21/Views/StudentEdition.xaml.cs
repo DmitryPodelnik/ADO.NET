@@ -13,25 +13,25 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using EXAM_27._05._21.Models;
 using EXAM_27._05._21.ViewModels;
-using Microsoft.EntityFrameworkCore;
 
 namespace EXAM_27._05._21.Views
 {
     /// <summary>
-    /// Interaction logic for AddressEdition.xaml
+    /// Interaction logic for StudentEdition.xaml
     /// </summary>
-    public partial class AddressEdition : Window
+    public partial class StudentEdition : Window
     {
-        public AddressEdition()
+        public StudentEdition()
         {
             InitializeComponent();
 
-            DataContext = new AddressViewModel(this);
+            DataContext = new StudentViewModel(this);
         }
 
-        private async void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            ((StepAcademy)Application.Current.MainWindow).mainDataGrid.ItemsSource = await StepAcademyDataBase.Context.Addresses.ToListAsync();
+            var window = (StepAcademy)Application.Current.MainWindow;
+            StepAcademyDataBase.GetAllStudents(ref window);
         }
     }
 }

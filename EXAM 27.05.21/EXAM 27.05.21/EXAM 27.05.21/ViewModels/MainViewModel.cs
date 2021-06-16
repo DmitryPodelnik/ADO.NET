@@ -64,7 +64,7 @@ namespace EXAM_27._05._21.ViewModels
 
                 case "Academies' Phones":
 
-                    _database.GetAllAcademyPhones(ref _mainWindow);
+                    StepAcademyDataBase.GetAllAcademyPhones(ref _mainWindow);
 
                     break;
 
@@ -88,19 +88,19 @@ namespace EXAM_27._05._21.ViewModels
 
                 case "Groups":
 
-                    _database.GetAllGroups(ref _mainWindow);
+                    StepAcademyDataBase.GetAllGroups(ref _mainWindow);
 
                     break;
 
                 case "Leaders":
 
-                    _database.GetAllLeaders(ref _mainWindow);
+                    StepAcademyDataBase.GetAllLeaders(ref _mainWindow);
 
                     break;
 
                 case "Lecturers":
 
-                    _database.GetAllLecturers(ref _mainWindow);
+                    StepAcademyDataBase.GetAllLecturers(ref _mainWindow);
 
                     break;
 
@@ -112,13 +112,13 @@ namespace EXAM_27._05._21.ViewModels
 
                 case "Students":
 
-                    _database.GetAllStudents(ref _mainWindow);
+                    StepAcademyDataBase.GetAllStudents(ref _mainWindow);
 
                     break;
 
                 case "Students'Grades":
 
-                    _database.GetAllStudentsGrades(ref _mainWindow);
+                    StepAcademyDataBase.GetAllStudentsGrades(ref _mainWindow);
 
                     break;
 
@@ -181,7 +181,8 @@ namespace EXAM_27._05._21.ViewModels
 
                 case "Academies' Phones":
                     {
-
+                        AcademyPhoneEdition _window = new();
+                        _window.ShowDialog();
                     }
 
                     break;
@@ -197,7 +198,8 @@ namespace EXAM_27._05._21.ViewModels
 
                 case "Records":
                     {
-
+                        RecordEdition _window = new();
+                        _window.ShowDialog();
                     }
 
 
@@ -205,7 +207,8 @@ namespace EXAM_27._05._21.ViewModels
 
                 case "Genders":
                     {
-
+                        GenderEdition _window = new();
+                        _window.ShowDialog();
                     }
 
 
@@ -213,7 +216,8 @@ namespace EXAM_27._05._21.ViewModels
 
                 case "Groups":
                     {
-
+                        GroupEdition _window = new();
+                        _window.ShowDialog();
                     }
 
 
@@ -221,7 +225,8 @@ namespace EXAM_27._05._21.ViewModels
 
                 case "Leaders":
                     {
-
+                        LeaderEdition _window = new();
+                        _window.ShowDialog();
                     }
 
 
@@ -229,7 +234,8 @@ namespace EXAM_27._05._21.ViewModels
 
                 case "Lecturers":
                     {
-
+                        LecturerEdition _window = new();
+                        _window.ShowDialog();
                     }
 
 
@@ -237,7 +243,8 @@ namespace EXAM_27._05._21.ViewModels
 
                 case "Specialties":
                     {
-
+                        SpecialtyEdition _window = new();
+                        _window.ShowDialog();
                     }
 
 
@@ -245,7 +252,8 @@ namespace EXAM_27._05._21.ViewModels
 
                 case "Students":
                     {
-
+                        StudentEdition _window = new();
+                        _window.ShowDialog();
                     }
 
 
@@ -253,7 +261,8 @@ namespace EXAM_27._05._21.ViewModels
 
                 case "Students'Grades":
                     {
-
+                        StudentGradeEdition _window = new();
+                        _window.ShowDialog();
                     }
 
 
@@ -261,7 +270,8 @@ namespace EXAM_27._05._21.ViewModels
 
                 case "Subjects":
                     {
-
+                        SubjectEdition _window = new();
+                        _window.ShowDialog();
                     }
 
 

@@ -12,10 +12,10 @@ using EXAM_27._05._21.Views;
 
 namespace EXAM_27._05._21.ViewModels
 {
-    class LecturerViewModel : INotifyPropertyChanged
+    class RecordViewModel : INotifyPropertyChanged
     {
         private StepAcademy _mainWindow = (StepAcademy)Application.Current.MainWindow;
-        private LecturerEdition _window;
+        private RecordEdition _window;
 
         private RelayCommand _saveCommand;
         public RelayCommand SaveCommand
@@ -25,11 +25,11 @@ namespace EXAM_27._05._21.ViewModels
                 return _saveCommand =
                 (_saveCommand = new RelayCommand(obj =>
                 {
-                    AddLecturer(_window.textFirstName.Text, _window.textLastName.Text, Convert.ToDateTime(_window.textBirthDate.Text), Int32.Parse(_window.textGroup.Text));
+                    AddRecord(Byte.Parse(_window.textCoins.Text), Byte.Parse(_window.textCoins.Text), _window.textSubject.Text);
                 }));
             }
         }
-        public LecturerViewModel(LecturerEdition window)
+        public RecordViewModel(RecordEdition window)
         {
             _window = window;
         }
@@ -47,30 +47,29 @@ namespace EXAM_27._05._21.ViewModels
             }
         }
 
-        public async Task AddLecturer(string firstName, string lastName, DateTime birthDate, int groupId)
+        public async Task AddRecord(byte coins, byte course, string subject)
         {
-            var newLecturer = new Lecturer
+            var newRecord = new Record
             {
-                FirstName = firstName,
-                LastName = lastName,
-                BirthDate = birthDate,
-                GroupId = groupId
+                Coins = coins,
+                Course = course,
+                Subject = subject
             };
-            await StepAcademyDataBase.Context.Lecturers.AddAsync(newLecturer);
+            await StepAcademyDataBase.Context.Records.AddAsync(newRecord);
             await StepAcademyDataBase.Context.SaveChangesAsync();
 
-            MessageBox.Show("A new lecturer has been successfully added!");
+            MessageBox.Show("A new record has been successfully added!");
 
             ClearTextBoxes();
 
             void ClearTextBoxes()
             {
-                _window.textFirstName.Text = "";
-                _window.textLastName.Text = "";
-                _window.textBirthDate.Text = "";
-                _window.textGroup.Text = "";
+                _window.textCoins.Text = "";
+                _window.textCourse.Text = "";
+                _window.textSubject.Text = "";
             }
         }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")

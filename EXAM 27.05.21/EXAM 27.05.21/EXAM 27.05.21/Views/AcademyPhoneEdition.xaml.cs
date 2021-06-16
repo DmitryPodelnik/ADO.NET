@@ -18,20 +18,21 @@ using Microsoft.EntityFrameworkCore;
 namespace EXAM_27._05._21.Views
 {
     /// <summary>
-    /// Interaction logic for AddressEdition.xaml
+    /// Interaction logic for AcademyPhoneEdition.xaml
     /// </summary>
-    public partial class AddressEdition : Window
+    public partial class AcademyPhoneEdition : Window
     {
-        public AddressEdition()
+        public AcademyPhoneEdition()
         {
             InitializeComponent();
 
-            DataContext = new AddressViewModel(this);
+            DataContext = new AcademyPhoneViewModel(this);
         }
 
-        private async void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            ((StepAcademy)Application.Current.MainWindow).mainDataGrid.ItemsSource = await StepAcademyDataBase.Context.Addresses.ToListAsync();
+            var window = (StepAcademy)Application.Current.MainWindow;
+            StepAcademyDataBase.GetAllAcademyPhones(ref window);
         }
     }
 }

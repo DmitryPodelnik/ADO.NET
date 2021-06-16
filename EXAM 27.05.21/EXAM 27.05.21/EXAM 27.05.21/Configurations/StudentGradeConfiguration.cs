@@ -20,11 +20,6 @@ namespace EXAM_27._05._21.Configurations
                     new StudentGrade { Id = 2, StudentId = 2},
                     new StudentGrade { Id = 3, StudentId = 3}
               });
-
-            builder
-            .HasOne(p => p.Student)
-            .WithOne(t => t.Grades)
-            .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

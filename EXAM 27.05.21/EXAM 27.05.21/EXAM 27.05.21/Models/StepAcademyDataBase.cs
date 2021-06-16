@@ -335,7 +335,7 @@ namespace EXAM_27._05._21.Models
 
         }
 
-        public void GetAllLecturers(ref StepAcademy window)
+        static public void GetAllLecturers(ref StepAcademy window)
         {
             window.mainDataGrid.ItemsSource = Context.Lecturers
                            .Join(
@@ -352,7 +352,7 @@ namespace EXAM_27._05._21.Models
                                    }).ToList();
         }
 
-        public void GetAllStudentsGrades(ref StepAcademy window)
+       static public void GetAllStudentsGrades(ref StepAcademy window)
         {
             window.mainDataGrid.ItemsSource = (
                         from grade in Context.Grades
@@ -368,7 +368,7 @@ namespace EXAM_27._05._21.Models
                         }).ToList();
         }
 
-        public void GetAllAcademyPhones(ref StepAcademy window)
+        static public void GetAllAcademyPhones(ref StepAcademy window)
         {
             window.mainDataGrid.ItemsSource = Context.AcademyPhones
                         .Join(
@@ -385,10 +385,9 @@ namespace EXAM_27._05._21.Models
                                  }).ToList();
         }
 
-        public void GetAllGroups(ref StepAcademy window)
+        static public void GetAllGroups(ref StepAcademy window)
         {
             window.mainDataGrid.ItemsSource = Context.Groups
-                             .Where(g => g.SpecialtyId != null)
                              .Join(
                                     Context.Specialties,
                                     g => g.SpecialtyId,
@@ -401,7 +400,7 @@ namespace EXAM_27._05._21.Models
                                         Speciality = c.Name != null ? c.Name : "NULL"
                                     }).ToList();
         }
-        public void GetAllLeaders(ref StepAcademy window)
+        static public void GetAllLeaders(ref StepAcademy window)
         {
             window.mainDataGrid.ItemsSource = Context.Leaders
                             .Join(
@@ -425,7 +424,7 @@ namespace EXAM_27._05._21.Models
                                             }).ToList();
         }
 
-        public void GetAllStudents(ref StepAcademy window)
+        static public void GetAllStudents(ref StepAcademy window)
         {
             window.mainDataGrid.ItemsSource = Context.Students
                             .Join(

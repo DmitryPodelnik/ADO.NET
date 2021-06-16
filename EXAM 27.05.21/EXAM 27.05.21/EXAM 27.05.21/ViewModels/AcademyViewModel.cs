@@ -14,7 +14,6 @@ namespace EXAM_27._05._21
 {
     class AcademyViewModel : INotifyPropertyChanged
     {
-        //private StepAcademyDataBase _database = new();
         private StepAcademy _mainWindow = (StepAcademy)Application.Current.MainWindow;
         private AcademyEdition _window;
 
@@ -26,7 +25,7 @@ namespace EXAM_27._05._21
                 return _saveCommand =
                 (_saveCommand = new RelayCommand(obj =>
                 {
-                    AddItem();
+                    AddAcademy(_window.textCity.Text, _window.textStreet.Text, _window.textHouse.Text);
                 }));
             }
         }
@@ -45,17 +44,6 @@ namespace EXAM_27._05._21
                 {
                     _window.Close();
                 }));
-            }
-        }
-        public void AddItem()
-        {
-            switch (((StepAcademy)Application.Current.MainWindow).chooseTable.SelectedItem.ToString())
-            {
-                case "Academies":
-
-                    AddAcademy(_window.textCity.Text, _window.textStreet.Text, _window.textHouse.Text);
-
-                    break;            
             }
         }
 
