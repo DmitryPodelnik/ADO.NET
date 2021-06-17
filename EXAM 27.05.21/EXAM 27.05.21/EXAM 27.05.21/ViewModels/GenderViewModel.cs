@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using EXAM_27._05._21.Models;
 using EXAM_27._05._21.Views;
+using Microsoft.EntityFrameworkCore;
 
 namespace EXAM_27._05._21.ViewModels
 {
@@ -25,13 +26,23 @@ namespace EXAM_27._05._21.ViewModels
                 return _saveCommand =
                 (_saveCommand = new RelayCommand(obj =>
                 {
-                    AddGender(_window.textGender.Text);
+                    if (_window.Title == "Addition")
+                        AddGender(_window.textGender.Text);
+                    else
+                        EditGender();
                 }));
             }
         }
         public GenderViewModel(GenderEdition window)
         {
             _window = window;
+
+            if (_mainWindow.mainDataGrid.SelectedItem != null)
+            {
+                string fullString = _mainWindow.mainDataGrid.SelectedItem.ToString();
+
+                _window.textGender.Text = fullString.Substring(fullString.LastIndexOf(";") + 1);
+            }
         }
 
         private RelayCommand _closeWindow;
@@ -45,6 +56,29 @@ namespace EXAM_27._05._21.ViewModels
                     _window.Close();
                 }));
             }
+        }
+
+        public async Task EditGender()
+        {
+            int i = _mainWindow.mainDataGrid.SelectedIndex;
+            string stringItem = _mainWindow.mainDataGrid.Items[i].ToString();  // this give you access to the row
+            string stringId = null;
+
+            stringId = stringItem.Substring(0, stringItem.IndexOf(";"));
+
+            int id = Int32.Parse(stringId);
+
+            var editGender = await StepAcademyDataBase.Context.Genders.FirstOrDefaultAsync(a => a.Id == id);
+            if (editGender != null)
+            {
+                editGender.Type = _window.textGender.Text;
+
+                //StepAcademyDataBase.Context.Entry(editGender).State = EntityState.Modified;
+                StepAcademyDataBase.Context.Update(editGender);
+            }
+            await StepAcademyDataBase.Context.SaveChangesAsync();
+
+            MessageBox.Show("Gender has been successfully edited!");
         }
 
         public async Task AddGender(string gender)

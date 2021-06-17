@@ -162,18 +162,23 @@ namespace EXAM_27._05._21.ViewModels
         {
             get
             {
-                return _editCommand;
-
+                return _editCommand =
+                (_editCommand = new RelayCommand(obj =>
+                {
+                    AddItem("Edition", "Save");
+                }));
             }
         }
 
-        private void AddItem()
+        private void AddItem(string title = "Addition", string buttonName = "Add")
         {
             switch (SelectedTable)
             {
                 case "Academies":
                     {
                         AcademyEdition _window = new();
+                        _window.Title = title;
+                        _window.okButton.Content = buttonName;
                         _window.ShowDialog();
                     }
 
@@ -182,6 +187,8 @@ namespace EXAM_27._05._21.ViewModels
                 case "Academies' Phones":
                     {
                         AcademyPhoneEdition _window = new();
+                        _window.Title = title;
+                        _window.okButton.Content = buttonName;
                         _window.ShowDialog();
                     }
 
@@ -190,6 +197,8 @@ namespace EXAM_27._05._21.ViewModels
                 case "Addresses":
                     {
                         AddressEdition _window = new();
+                        _window.Title = title;
+                        _window.okButton.Content = buttonName;
                         _window.ShowDialog();
                     }
 
@@ -199,6 +208,8 @@ namespace EXAM_27._05._21.ViewModels
                 case "Records":
                     {
                         RecordEdition _window = new();
+                        _window.Title = title;
+                        _window.okButton.Content = buttonName;
                         _window.ShowDialog();
                     }
 
@@ -208,6 +219,8 @@ namespace EXAM_27._05._21.ViewModels
                 case "Genders":
                     {
                         GenderEdition _window = new();
+                        _window.Title = title;
+                        _window.okButton.Content = buttonName;
                         _window.ShowDialog();
                     }
 
@@ -217,6 +230,8 @@ namespace EXAM_27._05._21.ViewModels
                 case "Groups":
                     {
                         GroupEdition _window = new();
+                        _window.Title = title;
+                        _window.okButton.Content = buttonName;
                         _window.ShowDialog();
                     }
 
@@ -226,6 +241,8 @@ namespace EXAM_27._05._21.ViewModels
                 case "Leaders":
                     {
                         LeaderEdition _window = new();
+                        _window.Title = title;
+                        _window.okButton.Content = buttonName;
                         _window.ShowDialog();
                     }
 
@@ -235,6 +252,8 @@ namespace EXAM_27._05._21.ViewModels
                 case "Lecturers":
                     {
                         LecturerEdition _window = new();
+                        _window.Title = title;
+                        _window.okButton.Content = buttonName;
                         _window.ShowDialog();
                     }
 
@@ -244,6 +263,8 @@ namespace EXAM_27._05._21.ViewModels
                 case "Specialties":
                     {
                         SpecialtyEdition _window = new();
+                        _window.Title = title;
+                        _window.okButton.Content = buttonName;
                         _window.ShowDialog();
                     }
 
@@ -253,6 +274,8 @@ namespace EXAM_27._05._21.ViewModels
                 case "Students":
                     {
                         StudentEdition _window = new();
+                        _window.Title = title;
+                        _window.okButton.Content = buttonName;
                         _window.ShowDialog();
                     }
 
@@ -262,6 +285,8 @@ namespace EXAM_27._05._21.ViewModels
                 case "Students'Grades":
                     {
                         StudentGradeEdition _window = new();
+                        _window.Title = title;
+                        _window.okButton.Content = buttonName;
                         _window.ShowDialog();
                     }
 
@@ -271,6 +296,8 @@ namespace EXAM_27._05._21.ViewModels
                 case "Subjects":
                     {
                         SubjectEdition _window = new();
+                        _window.Title = title;
+                        _window.okButton.Content = buttonName;
                         _window.ShowDialog();
                     }
 

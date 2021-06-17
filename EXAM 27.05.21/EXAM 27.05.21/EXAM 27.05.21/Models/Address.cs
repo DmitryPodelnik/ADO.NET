@@ -45,7 +45,7 @@ namespace EXAM_27._05._21.Models
 
         public override string ToString()
         {
-            return Id + ";" + District + ";" + City + ";" + Street + ";" + House + ";" + Flat;
+            return Id + ";" + City + ";" + District + ";" + Street + ";" + House + ";" + Flat;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

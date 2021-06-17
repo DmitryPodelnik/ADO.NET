@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using EXAM_27._05._21.Models;
 using EXAM_27._05._21.ViewModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace EXAM_27._05._21
 {
@@ -25,13 +26,25 @@ namespace EXAM_27._05._21
                 return _saveCommand =
                 (_saveCommand = new RelayCommand(obj =>
                 {
-                    AddAcademy(_window.textCity.Text, _window.textStreet.Text, _window.textHouse.Text);
+                    if (_window.Title == "Addition")
+                        AddAcademy(_window.textCity.Text, _window.textStreet.Text, _window.textHouse.Text);
+                    else
+                        EditAcademy();
                 }));
             }
         }
         public AcademyViewModel(AcademyEdition window)
         {
             _window = window;
+
+            if (_mainWindow.mainDataGrid.SelectedItem != null)
+            {
+                string fullString = _mainWindow.mainDataGrid.SelectedItem.ToString();
+
+                _window.textCity.Text = fullString.Substring(fullString.IndexOf(";") + 1, fullString.Substring(fullString.IndexOf(";") + 1).IndexOf(";"));
+                _window.textStreet.Text = fullString.Substring(fullString.Substring(fullString.IndexOf(";") + 1).IndexOf(";") + 3, fullString.Substring(fullString.Substring(fullString.IndexOf(";") + 1).IndexOf(";") + 3).IndexOf(";"));
+                _window.textHouse.Text = fullString.Substring(fullString.LastIndexOf(";") + 1);
+            }
         }
 
         private RelayCommand _closeWindow;
@@ -45,6 +58,31 @@ namespace EXAM_27._05._21
                     _window.Close();
                 }));
             }
+        }
+
+        public async Task EditAcademy()
+        {
+            int i = _mainWindow.mainDataGrid.SelectedIndex;
+            string stringItem = _mainWindow.mainDataGrid.Items[i].ToString();  // this give you access to the row
+            string stringId = null;
+
+            stringId = stringItem.Substring(0, stringItem.IndexOf(";"));
+
+            int id = Int32.Parse(stringId);
+
+            var editAcademy = await StepAcademyDataBase.Context.Academies.FirstOrDefaultAsync(a => a.Id == id);
+            if (editAcademy != null)
+            {
+                editAcademy.City = _window.textCity.Text;
+                editAcademy.Street = _window.textStreet.Text;
+                editAcademy.House = _window.textHouse.Text;
+
+                //StepAcademyDataBase.Context.Entry(editAcademy).State = EntityState.Modified;
+                StepAcademyDataBase.Context.Update(editAcademy);
+            }
+            await StepAcademyDataBase.Context.SaveChangesAsync();
+
+            MessageBox.Show("Academy has been successfully edited!");
         }
 
         public async Task AddAcademy(string city, string street, string house)

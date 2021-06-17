@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using EXAM_27._05._21.Models;
 using EXAM_27._05._21.Views;
+using Microsoft.EntityFrameworkCore;
 
 namespace EXAM_27._05._21.ViewModels
 {
@@ -25,13 +26,24 @@ namespace EXAM_27._05._21.ViewModels
                 return _saveCommand =
                 (_saveCommand = new RelayCommand(obj =>
                 {
-                    AddSpecialty(Int16.Parse(_window.textCode.Text), _window.textName.Text);
+                    if (_window.Title == "Addition")
+                        AddSpecialty(Int16.Parse(_window.textCode.Text), _window.textName.Text);
+                    else
+                        EditSpecialty();
                 }));
             }
         }
         public SpecialtyViewModel(SpecialtyEdition window)
         {
             _window = window;
+
+            if (_mainWindow.mainDataGrid.SelectedItem != null)
+            {
+                string fullString = _mainWindow.mainDataGrid.SelectedItem.ToString();
+
+                _window.textCode.Text = fullString.Substring(fullString.IndexOf(";") + 1, fullString.Substring(fullString.IndexOf(";") + 1).IndexOf(";"));
+                _window.textName.Text = fullString.Substring(fullString.LastIndexOf(";") + 1);
+            }
         }
 
         private RelayCommand _closeWindow;
@@ -45,6 +57,30 @@ namespace EXAM_27._05._21.ViewModels
                     _window.Close();
                 }));
             }
+        }
+
+        public async Task EditSpecialty()
+        {
+            int i = _mainWindow.mainDataGrid.SelectedIndex;
+            string stringItem = _mainWindow.mainDataGrid.Items[i].ToString();  // this give you access to the row
+            string stringId = null;
+
+            stringId = stringItem.Substring(0, stringItem.IndexOf(";"));
+
+            int id = Int32.Parse(stringId);
+
+            var editSpecialty = await StepAcademyDataBase.Context.Specialties.FirstOrDefaultAsync(a => a.Id == id);
+            if (editSpecialty != null)
+            {
+                editSpecialty.SpecialtyCode = Int16.Parse(_window.textCode.Text);
+                editSpecialty.Name = _window.textName.Text;
+
+                //StepAcademyDataBase.Context.Entry(editSpecialty).State = EntityState.Modified;
+                StepAcademyDataBase.Context.Update(editSpecialty);
+            }
+            await StepAcademyDataBase.Context.SaveChangesAsync();
+
+            MessageBox.Show("Specialty has been successfully edited!");
         }
 
         public async Task AddSpecialty(short specialtyCode, string name)

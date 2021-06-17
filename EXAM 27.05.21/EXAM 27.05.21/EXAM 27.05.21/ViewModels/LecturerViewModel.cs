@@ -32,6 +32,13 @@ namespace EXAM_27._05._21.ViewModels
         public LecturerViewModel(LecturerEdition window)
         {
             _window = window;
+
+            if (_mainWindow.mainDataGrid.SelectedItem != null)
+            {
+                string fullString = _mainWindow.mainDataGrid.SelectedItem.ToString();
+
+
+            }
         }
 
         private RelayCommand _closeWindow;

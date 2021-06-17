@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:EXAM_27._05._21.Views"
         mc:Ignorable="d"
         Title="Record Edition" Height="250" Width="450"
-        ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="ThreeDBorderWindow" Closing="Window_Closing">
+        ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="ThreeDBorderWindow" Closing="Window_Closing" Icon="/Views/edition.png">
     <Grid x:Name="mainGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="45*"/>
@@ -42,9 +42,9 @@
         <TextBox x:Name="textSubject" Grid.Row="3" Grid.Column="6" Grid.ColumnSpan="2" Margin="1,7,1,7"/>
 
 
-        <Button Content="Add" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2"
+        <Button x:Name="okButton" Content="Add" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2"
                 Command="{Binding SaveCommand}" Margin="0,6,0,7"/>
-        <Button Content="Exit" Grid.Row="4" Grid.Column="5" Grid.ColumnSpan="2"
+        <Button x:Name="deleteButton" Content="Exit" Grid.Row="4" Grid.Column="5" Grid.ColumnSpan="2"
                 Command="{Binding CloseWindow}" Margin="0,6,0,7"/>
     </Grid>
 </Window>

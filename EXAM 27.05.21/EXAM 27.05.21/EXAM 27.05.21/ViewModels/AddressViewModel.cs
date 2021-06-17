@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using EXAM_27._05._21.Models;
 using EXAM_27._05._21.Views;
+using Microsoft.EntityFrameworkCore;
 
 namespace EXAM_27._05._21.ViewModels
 {
@@ -25,13 +26,35 @@ namespace EXAM_27._05._21.ViewModels
                 return _saveCommand =
                 (_saveCommand = new RelayCommand(obj =>
                 {
-                    AddAddress(_window.textDistrict.Text, _window.textCity.Text, _window.textStreet.Text, _window.textHouse.Text, _window.textFlat.Text);
+                    if (_window.Title == "Addition")
+                        AddAddress(_window.textDistrict.Text, _window.textCity.Text, _window.textStreet.Text, _window.textHouse.Text, _window.textFlat.Text);
+                    else
+                        EditAddress();
                 }));
             }
         }
         public AddressViewModel(AddressEdition window)
         {
             _window = window;
+
+            if (_mainWindow.mainDataGrid.SelectedItem != null)
+            {
+                string fullString = _mainWindow.mainDataGrid.SelectedItem.ToString();
+
+                _window.textDistrict.Text = fullString.Substring(fullString.IndexOf(";") + 1, fullString.Substring(fullString.IndexOf(";") + 1).IndexOf(";"));
+
+                fullString = fullString.Substring(fullString.IndexOf(";") + 1);
+                fullString = fullString.Substring(fullString.IndexOf(";") + 1);
+                _window.textCity.Text = fullString.Substring(0, fullString.IndexOf(";"));
+
+                fullString = fullString.Substring(fullString.IndexOf(";") + 1);
+                _window.textStreet.Text = fullString.Substring(0, fullString.IndexOf(";"));
+
+                fullString = fullString.Substring(fullString.IndexOf(";") + 1);
+                _window.textHouse.Text = fullString.Substring(0, fullString.IndexOf(";"));
+
+                _window.textFlat.Text = fullString.Substring(fullString.LastIndexOf(";") + 1);
+            }
         }
 
         private RelayCommand _closeWindow;
@@ -45,6 +68,33 @@ namespace EXAM_27._05._21.ViewModels
                     _window.Close();
                 }));
             }
+        }
+
+        public async Task EditAddress()
+        {
+            int i = _mainWindow.mainDataGrid.SelectedIndex;
+            string stringItem = _mainWindow.mainDataGrid.Items[i].ToString();  // this give you access to the row
+            string stringId = null;
+
+            stringId = stringItem.Substring(0, stringItem.IndexOf(";"));
+
+            int id = Int32.Parse(stringId);
+
+            var editAddress = await StepAcademyDataBase.Context.Addresses.FirstOrDefaultAsync(a => a.Id == id);
+            if (editAddress != null)
+            {
+                editAddress.District = _window.textDistrict.Text;
+                editAddress.City = _window.textCity.Text;
+                editAddress.Street = _window.textStreet.Text;
+                editAddress.House = _window.textHouse.Text;
+                editAddress.Flat = _window.textFlat.Text;
+
+                //StepAcademyDataBase.Context.Entry(editAddress).State = EntityState.Modified;
+                StepAcademyDataBase.Context.Update(editAddress);
+            }
+            await StepAcademyDataBase.Context.SaveChangesAsync();
+
+            MessageBox.Show("Address has been successfully edited!");
         }
 
         public async Task AddAddress(string district, string city, string street, string house, string flat)
