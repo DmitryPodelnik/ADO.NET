@@ -36,7 +36,7 @@ namespace EXAM_27._05._21.Models
 
         public override string ToString()
         {
-            return Id + ";" + Coins + ";" + Course + ";" + Subject + ";" + StudentGradeId;
+            return Id + ";" + Coins + ";" + Course + ";" + Subject;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

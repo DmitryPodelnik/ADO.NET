@@ -32,7 +32,7 @@
         <TextBox x:Name="textPhone" Grid.Row="3"  Grid.Column="2" Grid.ColumnSpan="2" Height="20" Width="90"></TextBox>
 
         <Label Target="{Binding ElementName=textAcademy}" Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2" Content="Academy" HorizontalContentAlignment="Center"></Label>
-        <TextBox x:Name="textAcademy" Grid.Row="3"  Grid.Column="4" Grid.ColumnSpan="2" Height="20" Width="90"></TextBox>
+        <TextBox x:Name="textAcademy" Grid.Row="3"  Grid.Column="4" Grid.ColumnSpan="2" Height="20" Width="90" IsEnabled="False"></TextBox>
 
         <Button x:Name="okButton" Content="Add" Height="20" Width="90" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2"
                 Command="{Binding SaveCommand}"></Button>

@@ -99,36 +99,44 @@ namespace EXAM_27._05._21.ViewModels
                 return;
             }
 
-            int addressId = default;
             var address = await StepAcademyDataBase.Context.Addresses.FirstOrDefaultAsync(a => a.City + ", " + a.District + ", " + a.Street + ", " + a.House + ", " + a.Flat == _window.textAddress.Text);
             if (address is null)
             {
                 string city = previousAddress.Substring(0, previousAddress.IndexOf(","));
 
                 previousAddress = previousAddress.Substring(previousAddress.IndexOf(",") + 1);
-                string district = previousAddress.Substring(0, previousAddress.IndexOf(","));
+                string district = previousAddress.Substring(1, previousAddress.IndexOf(",") - 1);
 
                 previousAddress = previousAddress.Substring(previousAddress.IndexOf(",") + 1);
-                string street = previousAddress.Substring(0, previousAddress.IndexOf(","));
+                string street = previousAddress.Substring(1, previousAddress.IndexOf(",") - 1);
 
                 previousAddress = previousAddress.Substring(previousAddress.IndexOf(",") + 1);
-                string house = previousAddress.Substring(0, previousAddress.IndexOf(","));
+                string house = previousAddress.Substring(1, previousAddress.IndexOf(",") - 1);
 
                 previousAddress = previousAddress.Substring(previousAddress.IndexOf(",") + 1);
-                string flat = previousAddress.Substring(previousAddress.LastIndexOf(",") + 1);
+                string flat = previousAddress.Substring(previousAddress.LastIndexOf(",") + 2);
 
-                address = new Address
-                {
-                    City = city,
-                    District = district,
-                    Street = street,
-                    House = house,
-                    Flat = flat,
-                    Students = null
-                };
+
                 var editAddress = await StepAcademyDataBase.Context.Addresses.FirstOrDefaultAsync(a => a.City + ", " + a.District + ", " + a.Street + ", " + a.House + ", " + a.Flat ==
-                                                                                           address.City + ", " + address.District + ", " + address.Street + ", " + address.House + ", " + address.Flat);
+                                                                                                  city + ", " + district + ", " + street + ", " + house + ", " + flat);
 
+                string tempString = _window.textAddress.Text;
+
+                address = new Address();
+
+                address.City = tempString.Substring(0, tempString.IndexOf(","));
+
+                tempString = tempString.Substring(tempString.IndexOf(",") + 1);
+                address.District = tempString.Substring(1, tempString.IndexOf(",") - 1);
+
+                tempString = tempString.Substring(tempString.IndexOf(",") + 1);
+                address.Street = tempString.Substring(1, tempString.IndexOf(",") - 1);
+
+                tempString = tempString.Substring(tempString.IndexOf(",") + 1);
+                address.House = tempString.Substring(1, tempString.IndexOf(",") - 1);
+
+                tempString = tempString.Substring(tempString.IndexOf(",") + 1);
+                address.Flat = tempString.Substring(tempString.LastIndexOf(",") + 2);
                 //
                 // Изменение
                 //
@@ -143,7 +151,6 @@ namespace EXAM_27._05._21.ViewModels
                     //context.Entry(editAddress).State = EntityState.Modified;
                     StepAcademyDataBase.Context.Update(editAddress);
                 }
-                addressId = editAddress.Id;
             }
 
             var editStudent = await StepAcademyDataBase.Context.Students.FirstOrDefaultAsync(a => a.Id == id);
@@ -159,7 +166,7 @@ namespace EXAM_27._05._21.ViewModels
                 editStudent.AdmissionYear = Int16.Parse(_window.textYear.Text);
                 editStudent.GroupId = group.Id;
                 editStudent.GenderId = gender.Id;
-                editStudent.AddressId = addressId;
+                editStudent.AddressId = editStudent.AddressId;
 
                 //StepAcademyDataBase.Context.Entry(editStudent).State = EntityState.Modified;
                 StepAcademyDataBase.Context.Update(editStudent);

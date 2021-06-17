@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using EXAM_27._05._21.Models;
 using EXAM_27._05._21.Views;
+using Microsoft.EntityFrameworkCore;
 
 namespace EXAM_27._05._21.ViewModels
 {
@@ -25,7 +26,10 @@ namespace EXAM_27._05._21.ViewModels
                 return _saveCommand =
                 (_saveCommand = new RelayCommand(obj =>
                 {
-                    AddLeader(Int32.Parse(_window.textStudent.Text), Int32.Parse(_window.textGroup.Text));
+                    if (_window.Title == "Addition")
+                        AddLeader(Int32.Parse(_window.textStudent.Text), Int32.Parse(_window.textGroup.Text));
+                    else
+                        EditLeader();
                 }));
             }
         }
@@ -37,7 +41,8 @@ namespace EXAM_27._05._21.ViewModels
             {
                 string fullString = _mainWindow.mainDataGrid.SelectedItem.ToString();
 
-
+                _window.textStudent.Text = fullString.Substring(fullString.IndexOf("Learner = ") + 10, fullString.Substring(fullString.IndexOf("Learner = ") + 10).IndexOf(","));
+                _window.textGroup.Text = fullString.Substring(fullString.IndexOf("Class = ") + 8, (fullString.Substring(fullString.LastIndexOf("= ")).IndexOf("}") - 3));
             }
         }
 
@@ -52,6 +57,49 @@ namespace EXAM_27._05._21.ViewModels
                     _window.Close();
                 }));
             }
+        }
+
+        public async Task EditLeader()
+        {
+            int i = _mainWindow.mainDataGrid.SelectedIndex;
+            string stringItem = _mainWindow.mainDataGrid.Items[i].ToString();  // this give you access to the row
+            string stringId = null;
+
+            stringId = stringItem.Substring(7, 1);
+
+            int id = Int32.Parse(stringId);
+
+            string firstNameStudent = _window.textStudent.Text.Substring(0, _window.textStudent.Text.IndexOf(" "));
+            string lastNameStudent = _window.textStudent.Text.Substring(_window.textStudent.Text.IndexOf(" ") + 1);
+            
+
+            var student = await StepAcademyDataBase.Context.Students.FirstOrDefaultAsync(a => a.FirstName + " " + a.LastName == 
+                                                                                         firstNameStudent + " " + lastNameStudent);
+            if (student == null)
+            {
+                MessageBox.Show("You entered incorrect student!", "Error");
+                return;
+            }
+
+            var group = await StepAcademyDataBase.Context.Groups.FirstOrDefaultAsync(a => a.Name == _window.textGroup.Text);
+            if (group == null)
+            {
+                MessageBox.Show("You entered incorrect group!", "Error");
+                return;
+            }
+
+            var editLeader = await StepAcademyDataBase.Context.Leaders.FirstOrDefaultAsync(a => a.Id == id);
+            if (editLeader != null)
+            {
+                editLeader.StudentId = student.Id;
+                editLeader.GroupId = group.Id;
+
+                //StepAcademyDataBase.Context.Entry(editLeader).State = EntityState.Modified;
+                StepAcademyDataBase.Context.Update(editLeader);
+            }
+            await StepAcademyDataBase.Context.SaveChangesAsync();
+
+            MessageBox.Show("Leader has been successfully edited!");
         }
 
         public async Task AddLeader(int studentID, int groupID)

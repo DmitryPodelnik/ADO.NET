@@ -30,10 +30,10 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Label Target="{Binding ElementName=textStudent}" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" Content="Student ID" HorizontalContentAlignment="Center"></Label>
+        <Label Target="{Binding ElementName=textStudent}" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" Content="Student" HorizontalContentAlignment="Center"></Label>
         <TextBox x:Name="textStudent" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" Margin="0,7,0,7"/>
 
-        <Label Target="{Binding ElementName=textGroup}" Grid.Row="2" Grid.Column="5" Grid.ColumnSpan="2" Content="Group ID" HorizontalContentAlignment="Center"></Label>
+        <Label Target="{Binding ElementName=textGroup}" Grid.Row="2" Grid.Column="5" Grid.ColumnSpan="2" Content="Group" HorizontalContentAlignment="Center"></Label>
         <TextBox x:Name="textGroup" Grid.Row="3" Grid.Column="5" Grid.ColumnSpan="2" Margin="0,7,0,7"/>
 
         <Button x:Name="okButton" Content="Add" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2"

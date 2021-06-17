@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using EXAM_27._05._21.Models;
 using EXAM_27._05._21.Views;
+using Microsoft.EntityFrameworkCore;
 
 namespace EXAM_27._05._21.ViewModels
 {
@@ -25,7 +26,10 @@ namespace EXAM_27._05._21.ViewModels
                 return _saveCommand =
                 (_saveCommand = new RelayCommand(obj =>
                 {
-                    AddRecord(Byte.Parse(_window.textCoins.Text), Byte.Parse(_window.textCoins.Text), _window.textSubject.Text);
+                    if (_window.Title == "Addition")
+                        AddRecord(Byte.Parse(_window.textCoins.Text), Byte.Parse(_window.textCourse.Text), _window.textSubject.Text);
+                    else
+                        EditRecord();
                 }));
             }
         }
@@ -37,7 +41,9 @@ namespace EXAM_27._05._21.ViewModels
             {
                 string fullString = _mainWindow.mainDataGrid.SelectedItem.ToString();
 
-
+                _window.textCoins.Text = fullString.Substring(fullString.IndexOf(";") + 1, fullString.Substring(fullString.IndexOf(";") + 1).IndexOf(";"));
+                _window.textCourse.Text = fullString.Substring(fullString.LastIndexOf(";") - 1, 1);
+                _window.textSubject.Text = fullString.Substring(fullString.LastIndexOf(";") + 1);
             }
         }
 
@@ -52,6 +58,31 @@ namespace EXAM_27._05._21.ViewModels
                     _window.Close();
                 }));
             }
+        }
+
+        public async Task EditRecord()
+        {
+            int i = _mainWindow.mainDataGrid.SelectedIndex;
+            string stringItem = _mainWindow.mainDataGrid.Items[i].ToString();  // this give you access to the row
+            string stringId = null;
+
+            stringId = stringItem.Substring(0, stringItem.IndexOf(";"));
+
+            int id = Int32.Parse(stringId);
+
+            var editRecord = await StepAcademyDataBase.Context.Records.FirstOrDefaultAsync(a => a.Id == id);
+            if (editRecord != null)
+            {
+                editRecord.Coins = Byte.Parse(_window.textCoins.Text);
+                editRecord.Course = Byte.Parse(_window.textCourse.Text);
+                editRecord.Subject = _window.textSubject.Text;
+
+                //StepAcademyDataBase.Context.Entry(editRecord).State = EntityState.Modified;
+                StepAcademyDataBase.Context.Update(editRecord);
+            }
+            await StepAcademyDataBase.Context.SaveChangesAsync();
+
+            MessageBox.Show("Record has been successfully edited!");
         }
 
         public async Task AddRecord(byte coins, byte course, string subject)

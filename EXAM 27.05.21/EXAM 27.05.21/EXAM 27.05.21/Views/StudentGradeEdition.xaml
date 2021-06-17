@@ -30,7 +30,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Label Target="{Binding ElementName=textStudent}" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Content="Student ID" HorizontalContentAlignment="Center"></Label>
+        <Label Target="{Binding ElementName=textStudent}" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Content="Student" HorizontalContentAlignment="Center"></Label>
         <TextBox x:Name="textStudent" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,7,0,7"/>
 
         <Label Target="{Binding ElementName=textMark}" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" Content="Mark" HorizontalContentAlignment="Center"></Label>
