@@ -338,7 +338,7 @@ namespace EXAM_27._05._21.Models
         static public void GetAllLecturers(ref StepAcademy window)
         {
             window.mainDataGrid.ItemsSource = Context.Lecturers
-                           .Join(
+                           .LeftOuterJoin(
                                    Context.Groups,
                                    l => l.GroupId,
                                    g => g.Id,
@@ -348,7 +348,7 @@ namespace EXAM_27._05._21.Models
                                        FirstName = l.FirstName,
                                        LastName = l.LastName,
                                        BirthDate = l.BirthDate,
-                                       Class = g.Name
+                                       Class = g != null ? g.Name : "NULL"
                                    }).ToList();
         }
 
@@ -371,16 +371,16 @@ namespace EXAM_27._05._21.Models
         static public void GetAllAcademyPhones(ref StepAcademy window)
         {
             window.mainDataGrid.ItemsSource = Context.AcademyPhones
-                        .Join(
+                        .LeftOuterJoin(
                                  Context.Academies,
                                  u => u.AcademyId,
-                                 c => c.Id,
-                                 (u, c) => new
+                                 a => a.Id,
+                                 (u, a) => new
                                  {
                                      Id = u.Id,
-                                     AcademyCity = c.City,
-                                     AcademyStreet = c.Street,
-                                     AcademyHouse = c.House,
+                                     AcademyCity = a != null ? a.City : "NULL",
+                                     AcademyStreet = a != null ? a.Street : "NULL",
+                                     AcademyHouse = a != null ? a.House : "NULL",
                                      Phone = u.Phone
                                  }).ToList();
         }
@@ -388,7 +388,7 @@ namespace EXAM_27._05._21.Models
         static public void GetAllGroups(ref StepAcademy window)
         {
             window.mainDataGrid.ItemsSource = Context.Groups
-                             .Join(
+                             .LeftOuterJoin(
                                     Context.Specialties,
                                     g => g.SpecialtyId,
                                     c => c.Id,
@@ -397,22 +397,22 @@ namespace EXAM_27._05._21.Models
                                         Id = g.Id,
                                         Name = g.Name,
                                         Class = g.Class,
-                                        Speciality = c.Name != null ? c.Name : "NULL"
+                                        Speciality = c != null ? c.Name : "NULL"
                                     }).ToList();
         }
         static public void GetAllLeaders(ref StepAcademy window)
         {
             window.mainDataGrid.ItemsSource = Context.Leaders
-                            .Join(
+                            .LeftOuterJoin(
                                     Context.Students,
                                     l => l.StudentId,
                                     s => s.Id,
                                     (l, s) => new
                                     {
                                         Id = l.Id,
-                                        Student = s.FirstName + " " + s.LastName,
+                                        Student = s != null ? s.FirstName + " " + s.LastName : "NULL",
                                         GroupId = l.GroupId
-                                    }).Join(
+                                    }).LeftOuterJoin(
                                             Context.Groups,
                                             l => l.GroupId,
                                             g => g.Id,
@@ -420,14 +420,14 @@ namespace EXAM_27._05._21.Models
                                             {
                                                 Id = l.Id,
                                                 Learner = l.Student,
-                                                Class = g.Name
+                                                Class = g != null ? g.Name : "NULL"
                                             }).ToList();
         }
 
         static public void GetAllStudents(ref StepAcademy window)
         {
             window.mainDataGrid.ItemsSource = Context.Students
-                            .Join(
+                            .LeftOuterJoin(
                                     Context.Genders,
                                     s => s.GenderId,
                                     g => g.Id,
@@ -443,9 +443,9 @@ namespace EXAM_27._05._21.Models
                                         Email = s.Email,
                                         AdmissionYear = s.AdmissionYear,
                                         GroupId = s.GroupId,
-                                        Sex = g.Type,
+                                        Sex = g != null ? g.Type : "NULL",
                                         AddressId = s.AddressId
-                                    }).Join(
+                                    }).LeftOuterJoin(
                                                 Context.Groups,
                                                 g => g.GroupId,
                                                 gr => gr.Id,
@@ -460,10 +460,10 @@ namespace EXAM_27._05._21.Models
                                                     Phone = g.Phone,
                                                     Email = g.Email,
                                                     AdmissionYear = g.AdmissionYear,
-                                                    Class = gr.Name,
+                                                    Class = gr != null ? gr.Name : "NULL",
                                                     Sex = g.Sex,
-                                                    AddressId = g.AddressId != null ? g.AddressId : 1
-                                                }).Join(
+                                                    AddressId = g.AddressId
+                                                }).LeftOuterJoin(
                                                             Context.Addresses,
                                                             g => g.AddressId,
                                                             addr => addr.Id,
@@ -485,3 +485,5 @@ namespace EXAM_27._05._21.Models
         }
     }
 }
+
+
